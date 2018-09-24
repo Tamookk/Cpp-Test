@@ -29,6 +29,7 @@ Dunno why you want to but okay.
 * A compiler (C++ 11 compatible preferably)
 * Computer
 * Eyes
+* No but really, I'm going to make a makefile for this eventually. The project is massive and deserving of one for now you'll have to compile it by hand (if you want to, that is).
 
 ### Installing
 
@@ -48,13 +49,28 @@ Where `n` is the maximum number of hours the adventure runs for, and `p` is the 
 
 ### Overall Program:
 
-* Everything
+* Fix UML diagrams
+* Continue programming functionality:
+	* Complete functionality for remaining classes.
+	* Generate random spells for spell-casting entities.
+	* Generate random entities.
+	* Other stuff that isn't coming to me right now but it will, I promise.
+* Make program loop
+* Change UML diagram to better reflect final program.
+* Create a makefile
 
 ## Acknowledgments
 
 * My compsci professor for teaching me C++ and setting this assignment.
 
 ## Changelog
+
+### 24-09-2018
+* Created all files needed for project.
+
+* Cleaned up directories.
+
+* Started programming functionality inside files.
 
 ### 08-05-2018
 * Initial commit, created all files.
