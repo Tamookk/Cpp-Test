@@ -5,6 +5,20 @@
 
 #include "../include/Entity.h"
 
+// Constructor
+Entity::Entity(std::string name, int closeDamage, int distanceDamage, bool canCastSpells)
+{
+    this->name = name;
+    currentHealth = 100;
+    maximumHealth = 100;
+    damageMultiplier = 1.0;
+    gold = 0;
+    closeRangeDamage = closeDamage;
+    this->distanceDamage = distanceDamage;
+    this->canCastSpells = canCastSpells;
+    location = "";
+}
+
 // Move the entity to a location (close or far)
 void Entity::move(std::string location)
 {
@@ -14,16 +28,16 @@ void Entity::move(std::string location)
         std::cerr << "Not a valid location" << std::endl;
 }
 
-// Return the gold the entity has
-int Entity::getGold()
-{
-    return gold;
-}
-
 // Add gold to the entity
 void Entity::addGold(int amount)
 {
     gold += amount;
+}
+
+// Return the gold the entity has
+int Entity::getGold()
+{
+    return gold;
 }
 
 // Take damage
@@ -40,8 +54,20 @@ void Entity::addHealth(int health)
         currentHealth = maximumHealth;
 }
 
-// == Not on UML diagram but needed ==
-Entity::Entity()
-{
+// Get the entity's name
+std::string Entity::getName() { return name; }
 
+// get the entity's health
+int Entity::getHealth() { return currentHealth; }
+
+// Set the entity's damage multiplier
+void Entity::setDamageMultiplier(double val) { damageMultiplier = val; }
+
+// << operator
+std::ostream& operator<<(std::ostream& stream, const Entity e)
+{
+    stream << "Name: " << e.name << "\nMax Health: " << e.maximumHealth << "\nGold: ";
+    stream << e.gold << "\nClose Range Damage: " << e.closeRangeDamage;
+    stream << "\nDistance Damage: " << e.distanceDamage << "\nCan Cast Spells: " << e.canCastSpells;
+    return stream;
 }

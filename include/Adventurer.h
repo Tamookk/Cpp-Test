@@ -10,13 +10,15 @@
 
 #include "Entity.h"
 
-class Adventurer : protected Entity
+class Adventurer : public Entity
 {
 public:
-    void rangedAttack(Entity e);
-    void closeAttack(Entity e);
+    Adventurer(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
+               bool canCastSpells = false, int age = 20);
+    void rangedAttack(Entity &e);
+    void closeAttack(Entity &e);
     // Not in UML
-    Adventurer();
+    int die(Entity &e, int deathHour);
 
 protected:
     int age;

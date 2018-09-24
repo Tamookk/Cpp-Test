@@ -17,7 +17,7 @@ public:
 
 private:
     int mana;
-    DefensiveSpell* spells[]
+    DefensiveSpell* spells[];
 };
 
 #endif // TREE_H

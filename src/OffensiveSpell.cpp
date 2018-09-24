@@ -5,12 +5,19 @@
 
 #include "../include/OffensiveSpell.h"
 
-OffensiveSpell::OffensiveSpell()
+// Constructor
+OffensiveSpell::OffensiveSpell(std::string name, int cost, double damage, int numCanAffect)
+: Spell(name, cost)
 {
-
+    this->damage = damage;
+    numEntitiesCanDamage = numCanAffect;
 }
 
-void OffensiveSpell(Entity e)
+// Cast a spell
+void OffensiveSpell::castSpell(Entity* e)
 {
-
+    for(int i = 0; i < numEntitiesCanDamage; i++)
+    {
+        (e + i)->takeDamage(damage);
+    }
 }

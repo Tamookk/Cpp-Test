@@ -5,10 +5,27 @@
 
 #include <iostream>
 
+#include "../include/DefensiveMage.h"
+
 using namespace std;
 
 int main()
 {
-    cout << "Hello, World!" << endl;
+    DefensiveMage a1("Josh", 10, 0, false, 19);
+    DefensiveMage a2;
+
+    int freeGold = 0;
+
+    bool loop = true;
+    while(loop)
+    {
+        a1.closeAttack(a2);
+        if(a2.getHealth() <= 0)
+        {
+            freeGold += a2.die(a1, 1);
+            loop = false;
+        }
+    }
+
     return 0;
 }

@@ -7,12 +7,13 @@
 class OffensiveMage : public Adventurer
 {
 public:
-    OffensiveMage();
+    OffensiveMage(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
+                  bool canCastSpells = true, int age = 20);
     ~OffensiveMage();
 
 private:
     int mana;
-    OffensiveSpell* spells[];
+    OffensiveSpell* spells = new OffensiveSpell[5];
 };
 
 #endif

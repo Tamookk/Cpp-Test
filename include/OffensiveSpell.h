@@ -9,13 +9,11 @@
 #include "Entity.h"
 #include "Spell.h"
 
-
 class OffensiveSpell : public Spell
 {
 public:
-    void castSpell(Entity e);
-    // Not in UML
-    OffensiveSpell();
+    OffensiveSpell(std::string name = "AAA", int cost = 1, double damage = 10, int numCanAffect = 1);
+    void castSpell(Entity* e);
 
 private:
     int damage;

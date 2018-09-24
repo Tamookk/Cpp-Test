@@ -11,13 +11,17 @@
 class Entity
 {
 public:
+    Entity(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, bool canCastSpells = false);
     void move(std::string location);
     int getGold();
     void addGold(int amount);
     void takeDamage(int damage);
     void addHealth(int health);
-    // Not on UML
-    Entity();
+    // Not in UML
+    friend std::ostream& operator<<(std::ostream& stream, const Entity e);
+    std::string getName();
+    int getHealth();
+    void setDamageMultiplier(double val);
 
 protected:
     std::string name;

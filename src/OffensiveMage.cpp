@@ -5,12 +5,15 @@
 
 #include "../include/OffensiveMage.h"
 
-OffensiveMage::OffensiveMage()
+// Constructor
+OffensiveMage::OffensiveMage(std::string name, int closeDamage, int distanceDamage, bool canCastSpells, int age)
+: Adventurer(name, closeDamage, distanceDamage, canCastSpells, age)
 {
-
+    mana = 10;
 }
 
+// Destructor
 OffensiveMage::~OffensiveMage()
 {
-
+    delete [] spells;
 }

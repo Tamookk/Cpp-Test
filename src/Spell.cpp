@@ -5,7 +5,8 @@
 
 #include "../include/Spell.h"
 
-Spell::Spell()
+Spell::Spell(std::string name, int cost)
 {
-
+    this->name = name;
+    this->cost = cost;
 }

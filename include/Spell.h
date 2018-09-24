@@ -12,7 +12,7 @@ class Spell
 {
 public:
     // Not in UML
-    Spell();
+    Spell(std::string name = "AAA", int cost = 1);
 
 protected:
     std::string name;

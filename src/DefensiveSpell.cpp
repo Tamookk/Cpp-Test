@@ -5,12 +5,19 @@
 
 #include "../include/DefensiveSpell.h"
 
-DefensiveSpell::DefensiveSpell()
+// Constructor
+DefensiveSpell::DefensiveSpell(std::string name, int cost, double dmgReduction, int numCanAffect)
+: Spell(name, cost)
 {
-
+    damageReduction = dmgReduction;
+    numFriendliesCanHelp = numCanAffect;
 }
 
-void DefensiveSpell::castSpell(Entity e)
+// Cast a spell
+void DefensiveSpell::castSpell(Entity* e)
 {
-
+    for(int i = 0; i < numFriendliesCanHelp; i++)
+    {
+        (e + i)->setDamageMultiplier(1 - damageReduction);
+    }
 }
