@@ -3,7 +3,7 @@
 // 24/09/2018.
 //
 
-#include "Headers/OffensiveSpell.h"
+#include "../include/OffensiveSpell.h"
 
 OffensiveSpell::OffensiveSpell()
 {

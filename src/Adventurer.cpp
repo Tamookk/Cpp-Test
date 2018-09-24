@@ -3,7 +3,7 @@
 // 24/09/2018.
 //
 
-#include "Headers/Adventurer.h"
+#include "../include/Adventurer.h"
 
 Adventurer::Adventurer()
 {

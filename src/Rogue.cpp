@@ -1,4 +1,9 @@
-#include "Headers/Rogue.h"
+//
+// Created by Joshua Sutton
+// 24/09/2018.
+//
+
+#include "../include/Rogue.h"
 
 Rogue::Rogue()
 {

@@ -1,5 +1,5 @@
 //
-// Created by Joshua Sutton (5736894)
+// Created by Joshua Sutton
 // 10/09/2018.
 //
 

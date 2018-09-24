@@ -3,7 +3,7 @@
 // 18/09/2018.
 //
 
-#include "Headers/Entity.h"
+#include "../include/Entity.h"
 
 // Move the entity to a location (close or far)
 void Entity::move(string location)

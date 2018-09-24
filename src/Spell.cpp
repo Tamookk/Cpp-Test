@@ -3,7 +3,7 @@
 // 24/09/2018.
 //
 
-#include "Headers/Spell.h"
+#include "../include/Spell.h"
 
 Spell::Spell()
 {

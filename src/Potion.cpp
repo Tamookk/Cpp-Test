@@ -1,4 +1,9 @@
-#include "Headers/Potion.h"
+//
+// Created by Joshua Sutton
+// 24/09/2018.
+//
+
+#include "../include/Potion.h"
 
 Potion::Potion()
 {
