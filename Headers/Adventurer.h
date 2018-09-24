@@ -1,26 +1,26 @@
 //
-// Created by Joshua Sutton (5736894)
-// 10/09/2018.
+// Created by Joshua Sutton
+// 24/09/2018.
 //
-
-#include <iostream>
 
 #ifndef ADVENTURER_H
 #define ADVENTURER_H
 
+#include <iostream>
 
-class Adventurer
+#include "Headers/Entity.h"
+
+class Adventurer : protected Entity
 {
-private:
-    std::string name;
+protected:
     int age;
-    int currentHealth;
-    int maximumHealth;
+    int deathHour;
+    std::string killedBy;
 public:
+    void rangedAttack(Entity e);
+    void closeAttack(Entity e);
+    // Not in UML
     Adventurer();
-    Adventurer(std::string name, int age, int currentHealth, int maximumHealth);
-    ~Adventurer();
 };
 
-
-#endif
+#endif // ADVENTURER_H

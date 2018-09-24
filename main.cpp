@@ -5,8 +5,6 @@
 
 #include <iostream>
 
-#include "Headers/Adventurer.h"
-
 using namespace std;
 
 int main()
