@@ -10,6 +10,15 @@
 
 class Entity
 {
+public:
+    void move(std::string location);
+    int getGold();
+    void addGold(int amount);
+    void takeDamage(int damage);
+    void addHealth(int health);
+    // Not on UML
+    Entity();
+
 protected:
     std::string name;
     int currentHealth;
@@ -21,14 +30,6 @@ protected:
     bool canCastSpells;
     // Not in UML but needed
     std::string location;
-public:
-    void move(string location);
-    int getGold();
-    void addGold(int amount);
-    void takeDamage(int damage);
-    void addHealth(int health);
-    // Not on UML
-    Entity();
 };
 
 #endif

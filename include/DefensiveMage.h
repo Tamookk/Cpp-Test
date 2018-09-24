@@ -1,17 +1,18 @@
 #ifndef DEFENSIVEMAGE_H
 #define DEFENSIVEMAGE_H
 
-#include "Headers/Adventurer.h"
-
+#include "Adventurer.h"
+#include "DefensiveSpell.h"
 
 class DefensiveMage : public Adventurer
 {
-    public:
-        DefensiveMage();
+public:
+    DefensiveMage();
+    ~DefensiveMage();
 
-    protected:
-
-    private:
+private:
+    int mana;
+    DefensiveSpell* spells[];
 };
 
-#endif // DEFENSIVEMAGE_H
+#endif

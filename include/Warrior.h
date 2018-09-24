@@ -1,17 +1,16 @@
 #ifndef WARRIOR_H
 #define WARRIOR_H
 
-#include "Headers/Adventurer.h"
-
+#include "Adventurer.h"
 
 class Warrior : public Adventurer
 {
-    public:
-        Warrior();
+public:
+    Warrior();
+    void beChivalrous(Entity e);
 
-    protected:
-
-    private:
+private:
+    int chivalryFactor;
 };
 
-#endif // WARRIOR_H
+#endif

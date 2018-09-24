@@ -6,18 +6,20 @@
 #ifndef OFFENSIVESPELL_H
 #define OFFENSIVESPELL_H
 
-#include "Headers/Spell.h"
+#include "Entity.h"
+#include "Spell.h"
 
 
 class OffensiveSpell : public Spell
 {
-private:
-    int damage;
-    int numEntitiesCanDamage;
 public:
     void castSpell(Entity e);
     // Not in UML
     OffensiveSpell();
+
+private:
+    int damage;
+    int numEntitiesCanDamage;
 };
 
-#endif // OFFENSIVESPELL_H
+#endif

@@ -1,17 +1,18 @@
 #ifndef DEFENSIVESPELL_H
 #define DEFENSIVESPELL_H
 
-#include "Headers/Spell.h"
-
+#include "Spell.h"
+#include "Entity.h"
 
 class DefensiveSpell : public Spell
 {
-    public:
-        DefensiveSpell();
+public:
+    DefensiveSpell();
+    void castSpell(Entity e);
 
-    protected:
-
-    private:
+private:
+    int damageReduction;
+    int numFriendliesCanHelp;
 };
 
-#endif // DEFENSIVESPELL_H
+#endif

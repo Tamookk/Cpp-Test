@@ -1,18 +1,16 @@
 #ifndef ROGUE_H
 #define ROGUE_H
 
-#include "Headers/Adventurer.h"
-
+#include "Adventurer.h"
 
 class Rogue : public Adventurer
 {
-    public:
-        Rogue();
-        virtual ~Rogue();
+public:
+    Rogue();
+    int stealGold(Entity e);
 
-    protected:
-
-    private:
+private:
+    int thievingAbility;
 };
 
-#endif // ROGUE_H
+#endif

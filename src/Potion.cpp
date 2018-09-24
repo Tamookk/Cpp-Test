@@ -15,7 +15,7 @@ std::string Potion::getName()
     return name;
 }
 
-int Potion::getPotionNumber()
+double Potion::getPotionNumber()
 {
     return potionNumber;
 }

@@ -7,5 +7,10 @@
 
 DefensiveSpell::DefensiveSpell()
 {
-    //ctor
+
+}
+
+void DefensiveSpell::castSpell(Entity e)
+{
+
 }

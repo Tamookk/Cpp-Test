@@ -3,9 +3,9 @@
 // 24/09/2018.
 //
 
-#include "../include/Spell.h"
+#include "../include/Monster.h"
 
-Spell::Spell()
+Monster::Monster()
 {
 
 }

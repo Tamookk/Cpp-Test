@@ -7,5 +7,10 @@
 
 Warrior::Warrior()
 {
-    //ctor
+
+}
+
+void Warrior::beChivalrous(Entity e)
+{
+
 }

@@ -8,12 +8,10 @@
 
 #include <iostream>
 
+#include "Adventurer.h"
+
 class Potion
 {
-private:
-    std::string name;
-    double potionNumber;
-
 public:
     // Not in UML
     Potion();
@@ -22,6 +20,10 @@ public:
     void setPotionNumber(double val);
     // In UML
     void applyPotion(Adventurer adv);
+
+private:
+    std::string name;
+    double potionNumber;
 };
 
-#endif // POTION_H
+#endif

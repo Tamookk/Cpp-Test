@@ -10,12 +10,13 @@
 
 class Spell
 {
-protected:
-    std::string name;
-    int cost;
 public:
     // Not in UML
     Spell();
+
+protected:
+    std::string name;
+    int cost;
 };
 
-#endif // SPELL_H
+#endif

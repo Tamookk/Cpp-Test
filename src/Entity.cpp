@@ -6,12 +6,12 @@
 #include "../include/Entity.h"
 
 // Move the entity to a location (close or far)
-void Entity::move(string location)
+void Entity::move(std::string location)
 {
     if(location == "close" || location == "far")
         this->location = location;
     else
-        std::cerr << "Not a valid location" << endl;
+        std::cerr << "Not a valid location" << std::endl;
 }
 
 // Return the gold the entity has

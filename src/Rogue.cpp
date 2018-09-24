@@ -7,10 +7,10 @@
 
 Rogue::Rogue()
 {
-    //ctor
+
 }
 
-Rogue::~Rogue()
+int Rogue::stealGold(Entity e)
 {
-    //dtor
+    return 0;
 }

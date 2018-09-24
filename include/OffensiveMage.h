@@ -1,17 +1,18 @@
 #ifndef OFFENSIVEMAGE_H
 #define OFFENSIVEMAGE_H
 
-#include "Headers/Adventurer.h"
-
+#include "Adventurer.h"
+#include "OffensiveSpell.h"
 
 class OffensiveMage : public Adventurer
 {
-    public:
-        OffensiveMage();
+public:
+    OffensiveMage();
+    ~OffensiveMage();
 
-    protected:
-
-    private:
+private:
+    int mana;
+    OffensiveSpell* spells[];
 };
 
-#endif // OFFENSIVEMAGE_H
+#endif

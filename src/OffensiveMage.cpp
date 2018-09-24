@@ -7,5 +7,10 @@
 
 OffensiveMage::OffensiveMage()
 {
-    //ctor
+
+}
+
+OffensiveMage::~OffensiveMage()
+{
+
 }
