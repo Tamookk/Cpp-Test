@@ -12,6 +12,7 @@ Entity::Entity(std::string name, int closeDamage, int distanceDamage, bool canCa
     currentHealth = 100;
     maximumHealth = 100;
     damageMultiplier = 1.0;
+    defenceMultiplier = 1.0;
     gold = 0;
     closeRangeDamage = closeDamage;
     this->distanceDamage = distanceDamage;
@@ -43,7 +44,7 @@ int Entity::getGold()
 // Take damage
 void Entity::takeDamage(int damage)
 {
-    currentHealth -= damage;
+    currentHealth -= damage*defenceMultiplier;
 }
 
 // Add health to the entity
@@ -62,6 +63,9 @@ int Entity::getHealth() { return currentHealth; }
 
 // Set the entity's damage multiplier
 void Entity::setDamageMultiplier(double val) { damageMultiplier = val; }
+
+// Set the entity's defence multiplier (lower is better)
+void Entity::setDefenceMultiplier(double val) { defenceMultiplier = val; }
 
 // << operator
 std::ostream& operator<<(std::ostream& stream, const Entity e)

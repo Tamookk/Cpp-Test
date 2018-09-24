@@ -18,6 +18,6 @@ void DefensiveSpell::castSpell(Entity* e)
 {
     for(int i = 0; i < numFriendliesCanHelp; i++)
     {
-        (e + i)->setDamageMultiplier(1 - damageReduction);
+        (e + i)->setDefenceMultiplier(1 - damageReduction);
     }
 }

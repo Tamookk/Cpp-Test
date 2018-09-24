@@ -13,13 +13,8 @@
 class Potion
 {
 public:
-    // Not in UML
     Potion();
-    std::string getName();
-    double getPotionNumber();
-    void setPotionNumber(double val);
-    // In UML
-    void applyPotion(Adventurer adv);
+    void applyPotion(Adventurer &adv);
 
 private:
     std::string name;

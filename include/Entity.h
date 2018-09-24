@@ -22,6 +22,7 @@ public:
     std::string getName();
     int getHealth();
     void setDamageMultiplier(double val);
+    void setDefenceMultiplier(double val);
 
 protected:
     std::string name;
@@ -34,6 +35,7 @@ protected:
     bool canCastSpells;
     // Not in UML but needed
     std::string location;
+    double defenceMultiplier;
 };
 
 #endif

@@ -6,6 +6,7 @@
 *.layout
 *.depend
 *.cbp
+*.save-failed
 # generated directories
 bin/
 obj/

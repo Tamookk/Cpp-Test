@@ -19,6 +19,7 @@ public:
     void closeAttack(Entity &e);
     // Not in UML
     int die(Entity &e, int deathHour);
+    void fullyHeal();
 
 protected:
     int age;
