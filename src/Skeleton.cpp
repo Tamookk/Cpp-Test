@@ -5,12 +5,19 @@
 
 #include "../include/Skeleton.h"
 
-Skeleton::Skeleton()
+Skeleton::Skeleton(std::string name, int closeDamage, int distanceDamage, bool canCastSpells,
+                   std::string noise, int dootAbility)
+: Monster(name, closeDamage, distanceDamage, canCastSpells, noise)
 {
-
+    this->dootAbility = dootAbility;
 }
 
-void Skeleton::doot(Entity e)
+void Skeleton::doot(Entity &e)
 {
-
+    std::cout << "doot" << std::endl;
+    std::cout << "Entity " << e.getName() << " has been dooted. ";
+    std::cout << "They take " << dootAbility << " damage." << std::endl;
+    e.takeDamage(dootAbility);
+    if(e.getHealth() < 0)
+        kill(e);
 }

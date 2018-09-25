@@ -17,13 +17,9 @@ public:
                bool canCastSpells = false, int age = 20);
     void rangedAttack(Entity &e);
     void closeAttack(Entity &e);
-    // Not in UML
-    int die(Entity &e, int deathHour);
 
 protected:
     int age;
-    int deathHour;
-    std::string killedBy;
 };
 
 #endif

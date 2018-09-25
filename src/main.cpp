@@ -22,9 +22,10 @@ int main()
         a1.closeAttack(a2);
         if(a2.getHealth() <= 0)
         {
-            freeGold += a2.die(a1, 1);
+            freeGold += a1.kill(a2);
             loop = false;
         }
+        hour++;
     }
 
     return 0;

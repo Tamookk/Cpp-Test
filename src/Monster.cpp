@@ -29,13 +29,3 @@ void Monster::closeAttack(Entity &e)
     std::cout << closeRangeDamage * damageMultiplier << " damage was done!" << std::endl;
     std::cout << e.getHealth() << " HP remaining." << std::endl;
 }
-
-int Monster::die(Entity &e)
-{
-    std::cout << name << " was killed by " << e.getName() << ". RIP." << std::endl;
-    std::cout << "They had " << gold << " gold coin(s)." << std::endl;
-
-    int goldRemaining = gold;
-    gold = 0;
-    return goldRemaining;
-}

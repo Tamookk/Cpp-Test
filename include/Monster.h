@@ -19,7 +19,6 @@ public:
     // In UML
     void rangedAttack(Entity &e);
     void closeAttack(Entity &e);
-    int die(Entity &e);
 
 protected:
     std::string monsterNoise;

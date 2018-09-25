@@ -61,9 +61,6 @@ void Potion::applyPotion(Adventurer &adv)
         {
             std::cout << "Adventurer's health was increased!" << std::endl;
             adv.addHealth(distribution(generator) * 10);
-            // Set the adventurer's health to his maximum health if it is over that
-            if(adv.getHealth() > adv.getMaxHealth())
-                adv.setHealth(adv.getMaxHealth());
             std::cout << "Adventurer now has " << adv.getHealth() << " HP!" << std::endl;
             break;
         }
@@ -103,13 +100,13 @@ void Potion::applyPotion(Adventurer &adv)
             std::cout << "Adventurer now has " << adv.getHealth() << " HP!" << std::endl;
             // Kill the adventurer if health reduces to below 0
             if(adv.getHealth() <= 0)
-                adv.die(adv, 0);
+                adv.kill(adv);
             break;
         }
         default: // Make adventurer die instantly (hopefully never happens in practice)
             std::cout << "Uh-oh! This potion is other-worldly..." << std::endl;
             std::cout << "Adventurer dies instantly! RIP." << std::endl;
-            adv.die(adv, 0);
+            adv.kill(adv);
             break;
         }
     }

@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+#include "GlobalVariables.h"
+
 class Entity
 {
 public:
@@ -24,9 +26,10 @@ public:
     void setDamageMultiplier(double val);
     void setDefenceMultiplier(double val);
     void setMaximumHealth(int val);
-    void setHealth(int val);
     int getMaxHealth();
-    void removeGold(int val);
+    int kill(Entity &e);
+    void setKiller(std::string killer);
+    void setDeathHour();
 
 protected:
     std::string name;
@@ -40,6 +43,8 @@ protected:
     // Not in UML but needed
     std::string location;
     double defenceMultiplier;
+    int deathHour;
+    std::string killedBy;
 };
 
 #endif

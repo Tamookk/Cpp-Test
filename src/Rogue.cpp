@@ -19,12 +19,12 @@ int Rogue::stealGold(Entity &e)
     if(thievingAbility > e.getGold())
     {
         gold = e.getGold();
-        e.removeGold(gold);
+        e.addGold(-gold);
     }
     else
     {
         gold = e.getGold()%thievingAbility;
-        e.removeGold(gold);
+        e.addGold(-gold);
     }
     std::cout << "Adventurer stole " << gold << " gold!" << std::endl;
     return gold;

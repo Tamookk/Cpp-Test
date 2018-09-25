@@ -5,7 +5,7 @@
 
 #include "../include/Adventurer.h"
 
-// Constrcutor
+// Constructor
 Adventurer::Adventurer(std::string name, int closeDamage, int distanceDamage, bool canCastSpells, int age)
 : Entity(name, closeDamage, distanceDamage, canCastSpells)
 {
@@ -30,17 +30,4 @@ void Adventurer::closeAttack(Entity &e)
     e.takeDamage(closeRangeDamage * damageMultiplier);
     std::cout << closeRangeDamage * damageMultiplier << " damage was done!" << std::endl;
     std::cout << e.getHealth() << " HP remaining." << std::endl;
-}
-
-int Adventurer::die(Entity &e, int deathHour)
-{
-    killedBy = e.getName();
-    this->deathHour = deathHour;
-
-    std::cout << name << " was killed by " << killedBy << ". RIP." << std::endl;
-    std::cout << "They had " << gold << " gold coin(s)." << std::endl;
-
-    int goldRemaining = gold;
-    gold = 0;
-    return goldRemaining;
 }

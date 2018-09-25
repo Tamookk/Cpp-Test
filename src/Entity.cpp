@@ -70,17 +70,31 @@ void Entity::setDefenceMultiplier(double val) { defenceMultiplier = val; }
 // Set the entity's maximum health
 void Entity::setMaximumHealth(int val) { maximumHealth = val; }
 
-// Set the entity's health
-void Entity::setHealth(int val)
-{
-    currentHealth = val < maximumHealth ? val : maximumHealth;
-}
-
 // Get the entity's maximum health
 int Entity::getMaxHealth() { return maximumHealth; }
 
-// Remove gold from the entity
-void Entity::removeGold(int val) { gold -= val; }
+// Set who killed the entity
+void Entity::setKiller(std::string killer)
+{
+    killedBy = killer;
+}
+
+// Set the hour the entity died at
+void Entity::setDeathHour() { deathHour = hour; }
+
+// Kill an entity
+int Entity::kill(Entity &e)
+{
+    e.setKiller(name);
+    e.setDeathHour();
+
+    std::cout << e.getName() << " was killed by " << name << ". RIP." << std::endl;
+    std::cout << "They had " << e.getGold() << " gold coin(s)." << std::endl;
+
+    int freeGold = e.getGold();
+    e.addGold(-freeGold);
+    return freeGold;
+}
 
 // << operator
 std::ostream& operator<<(std::ostream& stream, const Entity e)
