@@ -79,6 +79,9 @@ void Entity::setHealth(int val)
 // Get the entity's maximum health
 int Entity::getMaxHealth() { return maximumHealth; }
 
+// Remove gold from the entity
+void Entity::removeGold(int val) { gold -= val; }
+
 // << operator
 std::ostream& operator<<(std::ostream& stream, const Entity e)
 {

@@ -5,12 +5,27 @@
 
 #include "../include/Rogue.h"
 
-Rogue::Rogue()
+Rogue::Rogue(std::string name, int closeDamage, int distanceDamage, bool canCastSpells, int age, int thiefSkill)
+: Adventurer(name, closeDamage, distanceDamage, canCastSpells, age)
 {
-
+    thievingAbility = thiefSkill;
 }
 
-int Rogue::stealGold(Entity e)
+int Rogue::stealGold(Entity &e)
 {
-    return 0;
+    // The amount of gold the rogue steals is dependent on their theiving ability
+    std::cout << name << " attempts to steal gold from " << e.getName() << "..." << std::endl;
+    int gold = 0;
+    if(thievingAbility > e.getGold())
+    {
+        gold = e.getGold();
+        e.removeGold(gold);
+    }
+    else
+    {
+        gold = e.getGold()%thievingAbility;
+        e.removeGold(gold);
+    }
+    std::cout << "Adventurer stole " << gold << " gold!" << std::endl;
+    return gold;
 }

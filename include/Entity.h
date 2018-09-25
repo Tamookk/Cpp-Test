@@ -26,6 +26,7 @@ public:
     void setMaximumHealth(int val);
     void setHealth(int val);
     int getMaxHealth();
+    void removeGold(int val);
 
 protected:
     std::string name;
