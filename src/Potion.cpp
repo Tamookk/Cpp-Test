@@ -42,18 +42,23 @@ void Potion::applyPotion(Adventurer &adv)
         switch(effect)
         {
         case 0: // Make adventurer's damage multiplier > 1
+        {
             double damageMult = 1 + (double)distribution(generator)/10;
             std::cout << "Adventurer's damage multiplier was changed!" << std::endl;
             adv.setDamageMultiplier(damageMult);
             std::cout << "Adventurer now has a damage multiplier of " << damageMult << "." << std::endl;
             break;
+        }
         case 1: // Reduces adventurer's defence multiplier
+        {
             double defenceMult = 1 - (double)distribution(generator)/10;
             std::cout << "Adventurer's defence multiplier was changed!" << std::endl;
             adv.setDefenceMultiplier(defenceMult);
             std::cout << "Adventurer now has a defence multiplier of " << defenceMult << "." << std::endl;
             break;
+        }
         case 2: // Add health to the adventurer
+        {
             std::cout << "Adventurer's health was increased!" << std::endl;
             adv.addHealth(distribution(generator) * 10);
             // Set the adventurer's health to his maximum health if it is over that
@@ -61,6 +66,7 @@ void Potion::applyPotion(Adventurer &adv)
                 adv.setHealth(adv.getMaxHealth());
             std::cout << "Adventurer now has " << adv.getHealth() << " HP!" << std::endl;
             break;
+        }
         default: // Make adventurer invincible (hopefully never happens in practice)
             std::cout << "Uh-oh! This potion is other-worldly..." << std::endl;
             adv.setDamageMultiplier(0);
@@ -75,29 +81,35 @@ void Potion::applyPotion(Adventurer &adv)
         switch(effect)
         {
         case 0: // Make adventurer's damage multiplier < 1
+        {
             double damageMult = 1 - (double)distribution(generator)/10;
             std::cout << "Adventurer's damage multiplier was changed!" << std::endl;
             adv.setDamageMultiplier(damageMult);
             std::cout << "Adventurer now has a damage multiplier of " << damageMult << "." << std::endl;
             break;
+        }
         case 1: // Increases adventurer's defence multiplier
+        {
             double defenceMult = 1 + (double)distribution(generator)/10;
             std::cout << "Adventurer's defence multiplier was changed!" << std::endl;
             adv.setDefenceMultiplier(defenceMult);
             std::cout << "Adventurer now has a defence multiplier of " << defenceMult << "." << std::endl;
             break;
+        }
         case 2: // Remove health to the adventurer
+        {
             std::cout << "Adventurer's health was decreased!" << std::endl;
             adv.takeDamage(distribution(generator) * 10);
             std::cout << "Adventurer now has " << adv.getHealth() << " HP!" << std::endl;
             // Kill the adventurer if health reduces to below 0
             if(adv.getHealth() <= 0)
-                adv.die();
+                adv.die(adv, 0);
             break;
+        }
         default: // Make adventurer die instantly (hopefully never happens in practice)
             std::cout << "Uh-oh! This potion is other-worldly..." << std::endl;
             std::cout << "Adventurer dies instantly! RIP." << std::endl;
-            adv.die();
+            adv.die(adv, 0);
             break;
         }
     }
