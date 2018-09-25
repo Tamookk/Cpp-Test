@@ -44,5 +44,3 @@ int Adventurer::die(Entity &e, int deathHour)
     gold = 0;
     return goldRemaining;
 }
-
-void Adventurer::fullyHeal() { currentHealth = maximumHealth; }

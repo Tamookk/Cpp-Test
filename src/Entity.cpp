@@ -67,6 +67,18 @@ void Entity::setDamageMultiplier(double val) { damageMultiplier = val; }
 // Set the entity's defence multiplier (lower is better)
 void Entity::setDefenceMultiplier(double val) { defenceMultiplier = val; }
 
+// Set the entity's maximum health
+void Entity::setMaximumHealth(int val) { maximumHealth = val; }
+
+// Set the entity's health
+void Entity::setHealth(int val)
+{
+    currentHealth = val < maximumHealth ? val : maximumHealth;
+}
+
+// Get the entity's maximum health
+int Entity::getMaxHealth() { return maximumHealth; }
+
 // << operator
 std::ostream& operator<<(std::ostream& stream, const Entity e)
 {

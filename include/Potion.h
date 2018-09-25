@@ -6,7 +6,9 @@
 #ifndef POTION_H
 #define POTION_H
 
+#include <ctime>
 #include <iostream>
+#include <random>
 
 #include "Adventurer.h"
 

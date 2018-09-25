@@ -23,6 +23,9 @@ public:
     int getHealth();
     void setDamageMultiplier(double val);
     void setDefenceMultiplier(double val);
+    void setMaximumHealth(int val);
+    void setHealth(int val);
+    int getMaxHealth();
 
 protected:
     std::string name;
