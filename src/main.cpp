@@ -25,7 +25,6 @@ int main(int argc, char* argv[])
         cout << "p: percentage chance of an encounter per hour (5-95)" << endl;
         return 1;
     }
-        return 1;
 
     // Set up running time
     numHours = atoi(argv[1]);
@@ -48,6 +47,10 @@ int main(int argc, char* argv[])
 
     // Generate adventurers
     Adventurer* adventurers = generateAdventurers();
+    for(int i = 0; i < 7; i++)
+    {
+        cout << adventurers[i] << endl << endl;
+    }
 
     delete [] adventurers;
 

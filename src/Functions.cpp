@@ -1,5 +1,6 @@
 #include "../include/Functions.h"
 
+// Generate the adventurers
 Adventurer* generateAdventurers()
 {
     Adventurer* adventurers = new Adventurer[7];
@@ -10,7 +11,41 @@ Adventurer* generateAdventurers()
     adventurers[2] = generateRogue();
     adventurers[3] = generateWarrior();
 
-
+    // Generate random 3 adventurers
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(1, 4);
+    int randomNum = distribution(generator);
+    for(int i = 4; i < 7; i++)
+    {
+        switch(randomNum)
+        {
+        case 1:
+        {
+            adventurers[i] = generateDefensiveMage();
+            break;
+        }
+        case 2:
+        {
+            adventurers[i] = generateOffensiveMage();
+            break;
+        }
+        case 3:
+        {
+            adventurers[i] = generateRogue();
+            break;
+        }
+        case 4:
+        {
+            adventurers[i] = generateWarrior();
+            break;
+        }
+        default:
+        {
+            adventurers[i] = generateWarrior();
+            break;
+        }
+        }
+    }
 
     return adventurers;
 }
@@ -45,21 +80,69 @@ Spell generateSpell(std::string type)
             spell = HealingSpell("Spell of Healing", cost, healingFactor);
             break;
         }
-        case 1:
+        case 1: // Defensive spell
+        {
+            int cost = distribution(generator);
+            double defenceFactor = (cost * distribution(generator))/100;
+            spell = DefenceMultiplierSpell("Spell of Good Defence", cost, defenceFactor);
             break;
-        case 2:
+        }
+        case 2: // Damage multiplier spell
+        {
+            int cost = distribution(generator);
+            double damageFactor = ((cost * distribution(generator))/100 + 1);
+            spell = DamageMultiplierSpell("Spell of Increased Damage", cost, damageFactor);
             break;
-        default:
+        }
+        default: // Spell that heals the entity by 100
+        {
+            int cost = distribution(generator);
+            spell = HealingSpell("Spell of Lots of Healing", cost, 100);
             break;
+        }
         }
     }
     else if(type == "offensive")
     {
-
+        // Pick a random offensive spell
+        spellNum = distribution(generator)%3;
+        switch(spellNum)
+        {
+        case 0: // Damage spell
+        {
+            // Generate random cost
+            int cost = distribution(generator);
+            // Generate random healing factor
+            int damage = cost*distribution(generator);
+            // Generate spell
+            spell = DamageSpell("Spell of Damage", cost, damage);
+            break;
+        }
+        case 1: // Defensive spell
+        {
+            int cost = distribution(generator);
+            double defenceFactor = 1 + (cost * distribution(generator))/100;
+            spell = DefenceMultiplierSpell("Spell of Bad Defence", cost, defenceFactor);
+            break;
+        }
+        case 2: // Damage multiplier spell
+        {
+            int cost = distribution(generator);
+            double damageFactor = ((cost * distribution(generator))/100);
+            spell = DamageMultiplierSpell("Spell of Lowered Damage", cost, damageFactor);
+            break;
+        }
+        default: // Spell that damages the entity by 100
+        {
+            int cost = distribution(generator);
+            spell = DamageSpell("Spell of Lots of Damage", cost, 100);
+            break;
+        }
+        }
     }
-    else
+    else // Default to a damage spell
     {
-
+        spell = DamageSpell("Spell of Mega Damage", 1, 1000);
     }
 
     return spell;
