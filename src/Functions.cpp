@@ -4,10 +4,13 @@ Adventurer* generateAdventurers()
 {
     Adventurer* adventurers = new Adventurer[7];
 
-    adventurers[0] = DefensiveMage();
-    adventurers[1] = OffensiveMage();
-    adventurers[2] = Rogue();
-    adventurers[3] = Warrior();
+    // Generate required 4 adventurers
+    adventurers[0] = generateDefensiveMage();
+    adventurers[1] = generateOffensiveMage();
+    adventurers[2] = generateRogue();
+    adventurers[3] = generateWarrior();
+
+
 
     return adventurers;
 }
@@ -15,16 +18,40 @@ Adventurer* generateAdventurers()
 // Generate a name for the adventurer
 std::string generateName()
 {
-    // list of names and pick a random one?
+    return "";
 }
 
 // Generate a spell based on the given type
 Spell generateSpell(std::string type)
 {
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(1, 10);
+    int spellNum = 0;
+
     Spell spell;
     if(type == "defensive")
     {
-
+        // Pick a random defensive spell
+        spellNum = distribution(generator)%3;
+        switch(spellNum)
+        {
+        case 0: // Healing spell
+        {
+            // Generate random cost
+            int cost = distribution(generator);
+            // Generate random healing factor
+            int healingFactor = cost*distribution(generator);
+            // Generate spell
+            spell = HealingSpell("Spell of Healing", cost, healingFactor);
+            break;
+        }
+        case 1:
+            break;
+        case 2:
+            break;
+        default:
+            break;
+        }
     }
     else if(type == "offensive")
     {
@@ -66,7 +93,7 @@ DefensiveMage generateDefensiveMage()
     // Generate spells
     for(int i = 0; i < 2; i++)
     {
-
+        generateSpell("defensive");
     }
 
     return DefensiveMage(name, closeDamage, rangedDamage, age, mana);
@@ -75,27 +102,64 @@ DefensiveMage generateDefensiveMage()
 // Generate an offensive mage
 OffensiveMage generateOffensiveMage()
 {
-    // Randomly choose a good or bad effect
+    // Generate a name for the mage
+    std::string name = generateName();
+
+    // Generate an age for the mage
     static std::default_random_engine generator(time(0));
-    static std::uniform_int_distribution<int> distribution(0, 10);
-    bool good = (bool)distribution(generator)%2;
-    // should generate to have an older age
-    // health comparable to defensive mage
-    // weak ranged damage
-    // poor close damage
+    static std::uniform_int_distribution<int> distribution(50, 80);
+    int age = distribution(generator);
+
+    // Generate health for the mage
+    distribution = std::uniform_int_distribution<int>(50, 70);
+    int health = distribution(generator);
+
+    // Generate ranged damage
+    distribution = std::uniform_int_distribution<int>(1, 10);
+    int rangedDamage = distribution(generator);
+    // Generate mana
+    int mana = distribution(generator);
+
+    // Generate close damage
+    distribution = std::uniform_int_distribution<int>(1, 5);
+    int closeDamage = distribution(generator);
+
+    // Generate spells
+    for(int i = 0; i < 2; i++)
+    {
+        generateSpell("offensive");
+    }
+
+    return OffensiveMage(name, closeDamage, rangedDamage, age, mana);
 }
 
 // Generate a rogue
 Rogue generateRogue()
 {
-    // Randomly choose a good or bad effect
+    // Generate a name for the rogue
+    std::string name = generateName();
+
+    // Generate an age for the rogue
     static std::default_random_engine generator(time(0));
-    static std::uniform_int_distribution<int> distribution(0, 10);
-    bool good = (bool)distribution(generator)%2;
-    // should generate to be younger
-    // health less than a warrior
-    // highest distance damage in the game
-    // mid-range close damage
+    static std::uniform_int_distribution<int> distribution(20, 40);
+    int age = distribution(generator);
+
+    // Generate health for the mage
+    distribution = std::uniform_int_distribution<int>(60, 80);
+    int health = distribution(generator);
+
+    // Generate ranged damage
+    distribution = std::uniform_int_distribution<int>(10, 20);
+    int rangedDamage = distribution(generator);
+
+    // Generate close damage
+    distribution = std::uniform_int_distribution<int>(1, 10);
+    int closeDamage = distribution(generator);
+
+    // Generate spells thieving ability
+    int thievingAbility = distribution(generator);
+
+    return Rogue(name, closeDamage, rangedDamage, age, thievingAbility);
 }
 
 // Generate a warrior

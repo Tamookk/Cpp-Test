@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "../include/DefensiveMage.h"
+#include "../include/Functions.h"
 #include "../include/GlobalVariables.h"
 
 using namespace std;
@@ -45,22 +46,10 @@ int main(int argc, char* argv[])
 
     cout << "Running for " << numHours << " hours." << endl;
 
-    DefensiveMage a1("Josh", 10, 0, false, 19);
-    DefensiveMage a2;
+    // Generate adventurers
+    Adventurer* adventurers = generateAdventurers();
 
-    int freeGold = 0;
-
-    bool loop = true;
-    while(loop)
-    {
-        a1.closeAttack(a2);
-        if(a2.getHealth() <= 0)
-        {
-            freeGold += a1.kill(a2);
-            loop = false;
-        }
-        hour++;
-    }
+    delete [] adventurers;
 
     return 0;
 }

@@ -9,6 +9,7 @@
 #include "../include/DefensiveMage.h"
 #include "../include/OffensiveMage.h"
 #include "../include/Rogue.h"
+#include "../include/Spell.h"
 #include "../include/Warrior.h"
 
 std::string generateName();
