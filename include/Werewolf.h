@@ -12,8 +12,9 @@
 class Werewolf : public Monster
 {
 public:
-    Werewolf();
-    void howl(Entity e);
+    Werewolf(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
+             std::string noise = "awoo", int loudness = 0);
+    void howl(Entity &e);
 
 private:
     int loudness;

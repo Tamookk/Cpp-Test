@@ -6,6 +6,8 @@
 #ifndef GLOBALVARIABLES_H
 #define GLOBALVARIABLES_H
 
-int hour = 0;
+extern int hour;
+extern int numHours;
+extern int probabilityOfEncounter;
 
 #endif

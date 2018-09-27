@@ -13,8 +13,7 @@
 class Adventurer : public Entity
 {
 public:
-    Adventurer(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
-               bool canCastSpells = false, int age = 20);
+    Adventurer(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int age = 20);
     void rangedAttack(Entity &e);
     void closeAttack(Entity &e);
 

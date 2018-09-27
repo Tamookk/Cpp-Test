@@ -6,10 +6,11 @@
 #include "../include/DefensiveMage.h"
 
 // Constructor
-DefensiveMage::DefensiveMage(std::string name, int closeDamage, int distanceDamage, bool canCastSpells, int age)
-: Adventurer(name, closeDamage, distanceDamage, canCastSpells, age)
+DefensiveMage::DefensiveMage(std::string name, int closeDamage, int distanceDamage, int age, int mana)
+: Adventurer(name, closeDamage, distanceDamage, age)
 {
-    mana = 10;
+    this->mana = mana;
+    canCastSpells = true;
 }
 
 // Destructor

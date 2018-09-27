@@ -5,12 +5,16 @@
 
 #include "../include/Warrior.h"
 
-Warrior::Warrior()
+Warrior::Warrior(std::string name, int closeDamage, int distanceDamage, int age, int chivalryFactor)
+: Adventurer(name, closeDamage, distanceDamage, age)
 {
-
+    this->chivalryFactor = chivalryFactor;
+    canCastSpells = false;
 }
 
-void Warrior::beChivalrous(Entity e)
+void Warrior::beChivalrous(Entity &e)
 {
-
+    std::cout << "Warrior " << name << " was chivalrous to " << e.getName() << "." << std::endl;
+    std::cout << e.getName() << " gains " << chivalryFactor << " HP!" << std::endl;
+    e.addHealth(chivalryFactor);
 }

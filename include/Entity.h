@@ -8,12 +8,12 @@
 
 #include <iostream>
 
-#include "GlobalVariables.h"
+#include "../include/GlobalVariables.h"
 
 class Entity
 {
 public:
-    Entity(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, bool canCastSpells = false);
+    Entity(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0);
     void move(std::string location);
     int getGold();
     void addGold(int amount);

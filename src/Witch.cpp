@@ -5,12 +5,14 @@
 
 #include "../include/Witch.h"
 
-Witch::Witch()
+Witch::Witch(std::string name, int closeDamage, int distanceDamage, std::string noise, int mana)
+: Monster(name, closeDamage, distanceDamage, noise)
 {
-
+    canCastSpells = true;
+    this->mana = mana;
 }
 
 Witch::~Witch()
 {
-
+    delete [] spells;
 }

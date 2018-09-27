@@ -13,7 +13,7 @@ class Skeleton : public Monster
 {
 public:
     Skeleton(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
-             bool canCastSpells = false, std::string noise = "doot", int dootAbility = 0);
+             std::string noise = "doot", int dootAbility = 0);
     void doot(Entity &e);
 
 private:

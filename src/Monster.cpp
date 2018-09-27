@@ -6,8 +6,8 @@
 #include "../include/Monster.h"
 
 // Constructor
-Monster::Monster(std::string name, int closeDamage, int distanceDamage, bool canCastSpells, std::string noise)
-: Entity(name, closeDamage, distanceDamage, canCastSpells)
+Monster::Monster(std::string name, int closeDamage, int distanceDamage, std::string noise)
+: Entity(name, closeDamage, distanceDamage)
 {
     monsterNoise = noise;
 }

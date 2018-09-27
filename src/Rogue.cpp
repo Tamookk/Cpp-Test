@@ -5,10 +5,11 @@
 
 #include "../include/Rogue.h"
 
-Rogue::Rogue(std::string name, int closeDamage, int distanceDamage, bool canCastSpells, int age, int thiefSkill)
-: Adventurer(name, closeDamage, distanceDamage, canCastSpells, age)
+Rogue::Rogue(std::string name, int closeDamage, int distanceDamage, int age, int thiefSkill)
+: Adventurer(name, closeDamage, distanceDamage, age)
 {
     thievingAbility = thiefSkill;
+    canCastSpells = false;
 }
 
 int Rogue::stealGold(Entity &e)

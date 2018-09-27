@@ -5,10 +5,11 @@
 
 #include "../include/Skeleton.h"
 
-Skeleton::Skeleton(std::string name, int closeDamage, int distanceDamage, bool canCastSpells,
+Skeleton::Skeleton(std::string name, int closeDamage, int distanceDamage,
                    std::string noise, int dootAbility)
-: Monster(name, closeDamage, distanceDamage, canCastSpells, noise)
+: Monster(name, closeDamage, distanceDamage, noise)
 {
+    canCastSpells = false;
     this->dootAbility = dootAbility;
 }
 

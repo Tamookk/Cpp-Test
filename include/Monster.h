@@ -14,8 +14,7 @@ class Monster : public Entity
 {
 public:
     // Not in UML
-    Monster(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
-            bool canCastSpells = false, std::string noise = "grr");
+    Monster(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, std::string noise = "grr");
     // In UML
     void rangedAttack(Entity &e);
     void closeAttack(Entity &e);

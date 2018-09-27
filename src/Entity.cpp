@@ -6,7 +6,7 @@
 #include "../include/Entity.h"
 
 // Constructor
-Entity::Entity(std::string name, int closeDamage, int distanceDamage, bool canCastSpells)
+Entity::Entity(std::string name, int closeDamage, int distanceDamage)
 {
     this->name = name;
     currentHealth = 100;
@@ -16,7 +16,6 @@ Entity::Entity(std::string name, int closeDamage, int distanceDamage, bool canCa
     gold = 0;
     closeRangeDamage = closeDamage;
     this->distanceDamage = distanceDamage;
-    this->canCastSpells = canCastSpells;
     location = "";
 }
 

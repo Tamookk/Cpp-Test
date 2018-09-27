@@ -6,8 +6,8 @@
 class Warrior : public Adventurer
 {
 public:
-    Warrior();
-    void beChivalrous(Entity e);
+    Warrior(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int age = 20, int chivalryFactor = 0);
+    void beChivalrous(Entity &e);
 
 private:
     int chivalryFactor;
