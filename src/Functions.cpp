@@ -144,7 +144,7 @@ Rogue generateRogue()
     static std::uniform_int_distribution<int> distribution(20, 40);
     int age = distribution(generator);
 
-    // Generate health for the mage
+    // Generate health for the rogue
     distribution = std::uniform_int_distribution<int>(60, 80);
     int health = distribution(generator);
 
@@ -156,7 +156,7 @@ Rogue generateRogue()
     distribution = std::uniform_int_distribution<int>(1, 10);
     int closeDamage = distribution(generator);
 
-    // Generate spells thieving ability
+    // Generate thieving ability
     int thievingAbility = distribution(generator);
 
     return Rogue(name, closeDamage, rangedDamage, age, thievingAbility);
@@ -165,12 +165,25 @@ Rogue generateRogue()
 // Generate a warrior
 Warrior generateWarrior()
 {
-    // Randomly choose a good or bad effect
+    // Generate a name for the warrior
+    std::string name = generateName();
+
+    // Generate an age for the warrior
     static std::default_random_engine generator(time(0));
-    static std::uniform_int_distribution<int> distribution(0, 10);
-    bool good = (bool)distribution(generator)%2;
-    // should generate to be middleaged
-    // highest health in game
-    // no distance damage
-    // highest close damage in game
+    static std::uniform_int_distribution<int> distribution(30, 50);
+    int age = distribution(generator);
+
+    // Generate health for the warrior
+    distribution = std::uniform_int_distribution<int>(80, 100);
+    int health = distribution(generator);
+
+    // Generate close damage
+    distribution = std::uniform_int_distribution<int>(10, 20);
+    int closeDamage = distribution(generator);
+
+    // Generate chivalry
+    distribution = std::uniform_int_distribution<int>(0, 10);
+    int chivalry = distribution(generator);
+
+    return Warrior(name, closeDamage, 0, age, chivalry);
 }
