@@ -15,10 +15,10 @@
 std::string generateName();
 Spell generateSpell(std::string type);
 
-Adventurer* generateAdventurers();
-DefensiveMage generateDefensiveMage();
-OffensiveMage generateOffensiveMage();
-Rogue generateRogue();
-Warrior generateWarrior();
+Adventurer** generateAdventurers();
+DefensiveMage* generateDefensiveMage();
+OffensiveMage* generateOffensiveMage();
+Rogue* generateRogue();
+Warrior* generateWarrior();
 
 #endif // FUNCTIONS_H

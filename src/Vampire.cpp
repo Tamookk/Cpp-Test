@@ -22,3 +22,6 @@ void Vampire::stealLife(Entity &e)
     std::cout << "!" << std::endl;
     fullness += (fullness%10) + 1;
 }
+
+// Get the type of the entity
+std::string Vampire::getType() { return std::string("Vampire"); }

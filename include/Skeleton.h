@@ -15,6 +15,8 @@ public:
     Skeleton(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
              std::string noise = "doot", int dootAbility = 0);
     void doot(Entity &e);
+    // Not un UML
+    std::string getType();
 
 private:
     int dootAbility;

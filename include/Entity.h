@@ -20,7 +20,7 @@ public:
     void takeDamage(int damage);
     void addHealth(int health);
     // Not in UML
-    friend std::ostream& operator<<(std::ostream& stream, const Entity e);
+    friend std::ostream& operator<<(std::ostream& stream, const Entity &e);
     std::string getName();
     int getHealth();
     void setDamageMultiplier(double val);
@@ -30,6 +30,7 @@ public:
     int kill(Entity &e);
     void setKiller(std::string killer);
     void setDeathHour();
+    virtual std::string getType() = 0;
 
 protected:
     std::string name;

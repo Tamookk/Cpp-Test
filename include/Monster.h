@@ -18,6 +18,8 @@ public:
     // In UML
     void rangedAttack(Entity &e);
     void closeAttack(Entity &e);
+    // Not in UML
+    virtual std::string getType() = 0;
 
 protected:
     std::string monsterNoise;

@@ -16,3 +16,6 @@ Witch::~Witch()
 {
     delete [] spells;
 }
+
+// Get the type of the entity
+std::string Witch::getType() { return std::string("Witch"); }

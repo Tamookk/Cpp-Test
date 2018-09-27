@@ -15,3 +15,6 @@ Tree::~Tree()
 {
     delete [] spells;
 }
+
+// Return the type of the entity
+std::string Tree::getType() { return std::string("Tree"); }

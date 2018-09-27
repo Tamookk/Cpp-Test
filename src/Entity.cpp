@@ -96,7 +96,7 @@ int Entity::kill(Entity &e)
 }
 
 // << operator
-std::ostream& operator<<(std::ostream& stream, const Entity e)
+std::ostream& operator<<(std::ostream& stream, const Entity &e)
 {
     stream << "Name: " << e.name << "\nMax Health: " << e.maximumHealth << "\nGold: ";
     stream << e.gold << "\nClose Range Damage: " << e.closeRangeDamage;

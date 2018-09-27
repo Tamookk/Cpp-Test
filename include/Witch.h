@@ -14,6 +14,8 @@ class Witch : public Monster
 public:
     Witch(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, std::string noise = "Heehee!", int mana = 0);
     ~Witch();
+    // Not in UML
+    std::string getType();
 private:
     int mana;
     OffensiveSpell* spells[];

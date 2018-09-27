@@ -18,3 +18,6 @@ DefensiveMage::~DefensiveMage()
 {
     delete [] spells;
 }
+
+// Get the type of the entity
+std::string DefensiveMage::getType() { return std::string("Defensive Mage"); }

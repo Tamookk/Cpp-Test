@@ -18,3 +18,6 @@ void Warrior::beChivalrous(Entity &e)
     std::cout << e.getName() << " gains " << chivalryFactor << " HP!" << std::endl;
     e.addHealth(chivalryFactor);
 }
+
+// Get the type of the entity
+std::string Warrior::getType() { return std::string("Warrior"); }

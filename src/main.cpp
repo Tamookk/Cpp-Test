@@ -6,7 +6,6 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "../include/DefensiveMage.h"
 #include "../include/Functions.h"
 #include "../include/GlobalVariables.h"
 
@@ -46,10 +45,11 @@ int main(int argc, char* argv[])
     cout << "Running for " << numHours << " hours." << endl;
 
     // Generate adventurers
-    Adventurer* adventurers = generateAdventurers();
+    Adventurer** adventurers = generateAdventurers();
     for(int i = 0; i < 7; i++)
     {
-        cout << adventurers[i] << endl << endl;
+        cout << "==" << adventurers[i]->getType() << "==" << endl;
+        cout << *adventurers[i] << endl << endl;
     }
 
     delete [] adventurers;

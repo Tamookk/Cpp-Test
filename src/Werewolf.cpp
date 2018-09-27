@@ -19,3 +19,6 @@ void Werewolf::howl(Entity &e)
     std::cout << e.getName() << " takes " << loudness << " damage!" << std::endl;
     e.takeDamage(loudness);
 }
+
+// Get the type of the entity
+std::string Werewolf::getType() { return std::string("Werewolf"); }

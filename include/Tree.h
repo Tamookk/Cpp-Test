@@ -15,6 +15,8 @@ public:
     Tree(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
          std::string noise = "*leaves rustling*", int mana = 0);
     ~Tree();
+    // not in UML
+    std::string getType();
 
 private:
     int mana;

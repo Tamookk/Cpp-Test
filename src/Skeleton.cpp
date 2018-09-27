@@ -22,3 +22,6 @@ void Skeleton::doot(Entity &e)
     if(e.getHealth() < 0)
         kill(e);
 }
+
+// Get the type of the entity
+std::string Skeleton::getType() { std::string("Skeleton"); }

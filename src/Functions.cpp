@@ -1,15 +1,19 @@
 #include "../include/Functions.h"
 
 // Generate the adventurers
-Adventurer* generateAdventurers()
+Adventurer** generateAdventurers()
 {
-    Adventurer* adventurers = new Adventurer[7];
+    Adventurer** adventurers = new Adventurer*[7];
 
     // Generate required 4 adventurers
-    adventurers[0] = generateDefensiveMage();
-    adventurers[1] = generateOffensiveMage();
-    adventurers[2] = generateRogue();
-    adventurers[3] = generateWarrior();
+    DefensiveMage* tmpDM = generateDefensiveMage();
+    OffensiveMage* tmpOM = generateOffensiveMage();
+    Rogue* tmpRg = generateRogue();
+    Warrior* tmpWr = generateWarrior();
+    adventurers[0] = tmpDM;
+    adventurers[1] = tmpOM;
+    adventurers[2] = tmpRg;
+    adventurers[3] = tmpWr;
 
     // Generate random 3 adventurers
     static std::default_random_engine generator(time(0));
@@ -21,30 +25,36 @@ Adventurer* generateAdventurers()
         {
         case 1:
         {
-            adventurers[i] = generateDefensiveMage();
+            tmpDM = generateDefensiveMage();
+            adventurers[i] = tmpDM;
             break;
         }
         case 2:
         {
-            adventurers[i] = generateOffensiveMage();
+            tmpOM = generateOffensiveMage();
+            adventurers[i] = tmpOM;
             break;
         }
         case 3:
         {
-            adventurers[i] = generateRogue();
+            tmpRg = generateRogue();
+            adventurers[i] = tmpRg;
             break;
         }
         case 4:
         {
-            adventurers[i] = generateWarrior();
+            tmpWr = generateWarrior();
+            adventurers[i] = tmpWr;
             break;
         }
         default:
         {
-            adventurers[i] = generateWarrior();
+            tmpWr = generateWarrior();
+            adventurers[i] = tmpWr;
             break;
         }
         }
+        randomNum = distribution(generator);
     }
 
     return adventurers;
@@ -149,7 +159,7 @@ Spell generateSpell(std::string type)
 }
 
 // Generate a defensive mage
-DefensiveMage generateDefensiveMage()
+DefensiveMage* generateDefensiveMage()
 {
     // Generate a name for the mage
     std::string name = generateName();
@@ -179,11 +189,11 @@ DefensiveMage generateDefensiveMage()
         generateSpell("defensive");
     }
 
-    return DefensiveMage(name, closeDamage, rangedDamage, age, mana);
+    return new DefensiveMage(name, closeDamage, rangedDamage, age, mana);
 }
 
 // Generate an offensive mage
-OffensiveMage generateOffensiveMage()
+OffensiveMage* generateOffensiveMage()
 {
     // Generate a name for the mage
     std::string name = generateName();
@@ -213,11 +223,11 @@ OffensiveMage generateOffensiveMage()
         generateSpell("offensive");
     }
 
-    return OffensiveMage(name, closeDamage, rangedDamage, age, mana);
+    return new OffensiveMage(name, closeDamage, rangedDamage, age, mana);
 }
 
 // Generate a rogue
-Rogue generateRogue()
+Rogue* generateRogue()
 {
     // Generate a name for the rogue
     std::string name = generateName();
@@ -242,11 +252,11 @@ Rogue generateRogue()
     // Generate thieving ability
     int thievingAbility = distribution(generator);
 
-    return Rogue(name, closeDamage, rangedDamage, age, thievingAbility);
+    return new Rogue(name, closeDamage, rangedDamage, age, thievingAbility);
 }
 
 // Generate a warrior
-Warrior generateWarrior()
+Warrior* generateWarrior()
 {
     // Generate a name for the warrior
     std::string name = generateName();
@@ -268,5 +278,5 @@ Warrior generateWarrior()
     distribution = std::uniform_int_distribution<int>(0, 10);
     int chivalry = distribution(generator);
 
-    return Warrior(name, closeDamage, 0, age, chivalry);
+    return new Warrior(name, closeDamage, 0, age, chivalry);
 }
