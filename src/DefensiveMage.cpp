@@ -21,3 +21,9 @@ DefensiveMage::~DefensiveMage()
 
 // Get the type of the entity
 std::string DefensiveMage::getType() { return std::string("Defensive Mage"); }
+
+// Add a spell to a mage's list of spells
+void DefensiveMage::addSpell(int index, Spell spell)
+{
+    spells[index] = spell;
+}

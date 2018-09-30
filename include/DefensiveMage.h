@@ -3,6 +3,7 @@
 
 #include "Adventurer.h"
 #include "DefensiveSpell.h"
+#include "Spell.h"
 
 class DefensiveMage : public Adventurer
 {
@@ -11,10 +12,11 @@ public:
     ~DefensiveMage();
     // not in uml
     std::string getType();
+    void addSpell(int index, Spell spell);
 
 private:
     int mana;
-    DefensiveSpell* spells = new DefensiveSpell[2];
+    Spell* spells = new Spell[2];
 };
 
 #endif

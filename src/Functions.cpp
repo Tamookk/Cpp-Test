@@ -183,13 +183,15 @@ DefensiveMage* generateDefensiveMage()
     distribution = std::uniform_int_distribution<int>(1, 5);
     int closeDamage = distribution(generator);
 
+    DefensiveMage* temp = new DefensiveMage(name, closeDamage, rangedDamage, age, mana);
+
     // Generate spells
     for(int i = 0; i < 2; i++)
     {
-        generateSpell("defensive");
+        temp->addSpell(i, generateSpell("defensive"));
     }
 
-    return new DefensiveMage(name, closeDamage, rangedDamage, age, mana);
+    return temp;
 }
 
 // Generate an offensive mage

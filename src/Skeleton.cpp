@@ -19,8 +19,6 @@ void Skeleton::doot(Entity &e)
     std::cout << "Entity " << e.getName() << " has been dooted. ";
     std::cout << "They take " << dootAbility << " damage." << std::endl;
     e.takeDamage(dootAbility);
-    if(e.getHealth() < 0)
-        kill(e);
 }
 
 // Get the type of the entity

@@ -10,6 +10,7 @@
 # generated directories
 bin/
 obj/
+.idea/
 
 ### Windows ###
 # Windows thumbnail cache files
