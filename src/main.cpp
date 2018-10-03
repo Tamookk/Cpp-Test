@@ -5,6 +5,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <random>
 
 #include "../include/Functions.h"
 #include "../include/GlobalVariables.h"
@@ -17,6 +18,9 @@ int probabilityOfEncounter;
 
 int main(int argc, char* argv[])
 {
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(1, 100);
+
     if(argc != 3)
     {
         cout << "Not enough arguments provided." << endl;
@@ -50,6 +54,31 @@ int main(int argc, char* argv[])
     {
         cout << "==" << adventurers[i]->getType() << "==" << endl;
         cout << *adventurers[i] << endl << endl;
+    }
+
+
+    // Main program loop
+
+    cout << "==Main Loop==" << endl;
+    for(int i = 0; i < numHours; i++)
+    {
+        hour++;
+
+        cout << "-Hour " << hour << "-" << endl;
+        if(distribution(generator) > probabilityOfEncounter)
+        {
+            cout << "Random Encounter!!" << endl;
+            Monster** monsters = generateMonsters(hour);
+            // generate random num of monsters between 1 and hour
+            // have adventurers fight monsters
+            //  - go through each adventurer
+            //  - randomly pick a monster
+            //  - randomly pick an action for the fighter
+            //  - carry out action on monster
+            //  - when all adventurers done, do same for monsters
+            //  - keep going with battle loop until each adventurer or monster dead
+            delete [] monsters;
+        }
     }
 
     delete [] adventurers;

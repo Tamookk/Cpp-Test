@@ -9,6 +9,7 @@ Tree::Tree(std::string name, int closeDamage, int distanceDamage, std::string no
 : Monster(name, closeDamage, distanceDamage, noise)
 {
     this-> mana = mana;
+    canCastSpells = true;
 }
 
 Tree::~Tree()
@@ -18,3 +19,9 @@ Tree::~Tree()
 
 // Return the type of the entity
 std::string Tree::getType() { return std::string("Tree"); }
+
+// Add a spell to a tree's list of spells
+void Tree::addSpell(int index, Spell spell)
+{
+    spells[index] = spell;
+}

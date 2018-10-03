@@ -60,6 +60,72 @@ Adventurer** generateAdventurers()
     return adventurers;
 }
 
+// Generate the monsters for the round
+Monster** generateMonsters(int hour)
+{
+    Skeleton* tmpSk;
+    Tree* tmpTr;
+    Vampire* tmpVm;
+    Werewolf* tmpWr;
+    Witch* tmpWt;
+
+    // Generate the number of monsters for that hour
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(1, hour);
+    int num = distribution(generator);
+
+    Monster** monsters = new Monster*[num];
+
+    // Generate the monsters
+    distribution = std::uniform_int_distribution<int>(1, 5);
+    int randomNum = distribution(generator);
+    for(int i = 0; i < num; i++)
+    {
+        switch(randomNum)
+        {
+        case 1:
+        {
+            tmpSk = generateSkeleton();
+            monsters[i] = tmpSk;
+            break;
+        }
+        case 2:
+        {
+            tmpTr = generateTree();
+            monsters[i] = tmpTr;
+            break;
+        }
+        case 3:
+        {
+            tmpVm = generateVampire();
+            monsters[i] = tmpVm;
+            break;
+        }
+        case 4:
+        {
+            tmpWr = generateWerewolf();
+            monsters[i] = tmpWr;
+            break;
+        }
+        case 5:
+        {
+            tmpWt = generateWitch();
+            monsters[i] = tmpWt;
+            break;
+        }
+        default:
+        {
+            tmpWt = generateWitch();
+            monsters[i] = tmpWt;
+            break;
+        }
+        }
+        randomNum = distribution(generator);
+    }
+
+    return monsters;
+}
+
 // Generate a name for the adventurer
 std::string generateName()
 {
@@ -281,4 +347,166 @@ Warrior* generateWarrior()
     int chivalry = distribution(generator);
 
     return new Warrior(name, closeDamage, 0, age, chivalry);
+}
+
+// Generate a Skeleton
+Skeleton* generateSkeleton()
+{
+    // Generate a name for the skeleton
+    std::string name = generateName();
+
+    // Generate an age for the skeleton
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(100, 500);
+    int age = distribution(generator);
+
+    // Generate health for the skeleton
+    distribution = std::uniform_int_distribution<int>(60, 80);
+    int health = distribution(generator);
+
+    // Generate ranged damage
+    distribution = std::uniform_int_distribution<int>(10, 20);
+    int rangedDamage = distribution(generator);
+
+    // Generate close damage
+    distribution = std::uniform_int_distribution<int>(1, 10);
+    int closeDamage = distribution(generator);
+
+    // Generate doot ability
+    distribution = std::uniform_int_distribution<int>(15, 30);
+    int dootAbility = distribution(generator);
+
+    Skeleton* temp = new Skeleton(name, closeDamage, rangedDamage, "doot", dootAbility);
+
+    return temp;
+}
+
+// Generate a tree
+Tree* generateTree()
+{
+    // Generate a name for the tree
+    std::string name = generateName();
+
+    // Generate an age for the tree
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(50, 2000);
+    int age = distribution(generator);
+
+    // Generate health for the tree
+    distribution = std::uniform_int_distribution<int>(50, 70);
+    int health = distribution(generator);
+
+    // Generate ranged damage
+    distribution = std::uniform_int_distribution<int>(1, 10);
+    int rangedDamage = distribution(generator);
+    // Generate mana
+    int mana = distribution(generator);
+
+    // Generate close damage
+    distribution = std::uniform_int_distribution<int>(1, 5);
+    int closeDamage = distribution(generator);
+
+    Tree* temp = new Tree(name, closeDamage, rangedDamage, "*leaves rustling", mana);
+
+    // Generate spells
+    for(int i = 0; i < 2; i++)
+    {
+        temp->addSpell(i, generateSpell("defensive"));
+    }
+
+    return temp;
+}
+
+// Generate a Vampire
+Vampire* generateVampire()
+{
+    // Generate a name for the vampire
+    std::string name = generateName();
+
+    // Generate an age for the vampire
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(20, 10000);
+    int age = distribution(generator);
+
+    // Generate health for the vampire
+    distribution = std::uniform_int_distribution<int>(60, 80);
+    int health = distribution(generator);
+
+    // Generate ranged damage
+    distribution = std::uniform_int_distribution<int>(1, 10);
+    int rangedDamage = distribution(generator);
+
+    // Generate close damage
+    distribution = std::uniform_int_distribution<int>(1, 10);
+    int closeDamage = distribution(generator);
+    // Generate fullness
+    int fullness = distribution(generator);
+
+    Vampire* temp = new Vampire(name, closeDamage, rangedDamage, "I vant to suck your blood!", fullness);
+
+    return temp;
+}
+
+// Generate a werewolf
+Werewolf* generateWerewolf()
+{
+  // Generate a name for the werewolf
+    std::string name = generateName();
+
+    // Generate an age for the werewolf
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(20, 60);
+    int age = distribution(generator);
+
+    // Generate health for the werewolf
+    distribution = std::uniform_int_distribution<int>(90, 120);
+    int health = distribution(generator);
+
+    // Generate close damage
+    distribution = std::uniform_int_distribution<int>(10, 15);
+    int closeDamage = distribution(generator);
+
+    // Generate loudness
+    distribution = std::uniform_int_distribution<int>(1, 10);
+    int loudness = distribution(generator);
+
+    Werewolf* temp = new Werewolf(name, closeDamage, 0, "awoo", loudness);
+
+    return temp;
+}
+
+// Generate a witch
+Witch* generateWitch()
+{
+    // Generate a name for the witch
+    std::string name = generateName();
+
+    // Generate an age for the witch
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(50, 80);
+    int age = distribution(generator);
+
+    // Generate health for the witch
+    distribution = std::uniform_int_distribution<int>(50, 70);
+    int health = distribution(generator);
+
+    // Generate ranged damage
+    distribution = std::uniform_int_distribution<int>(1, 10);
+    int rangedDamage = distribution(generator);
+    // Generate mana
+    int mana = distribution(generator);
+
+    // Generate close damage
+    distribution = std::uniform_int_distribution<int>(1, 5);
+    int closeDamage = distribution(generator);
+
+    Witch* temp = new Witch(name, closeDamage, rangedDamage, "Heehee!", mana);
+
+    // Generate spells
+    for(int i = 0; i < 2; i++)
+    {
+        temp->addSpell(i, generateSpell("offensive"));
+    }
+
+    return temp;
 }

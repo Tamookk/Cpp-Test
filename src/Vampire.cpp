@@ -5,11 +5,11 @@
 
 #include "../include/Vampire.h"
 
-Vampire::Vampire(std::string name, int closeDamage, int distanceDamage, std::string noise)
+Vampire::Vampire(std::string name, int closeDamage, int distanceDamage, std::string noise, int fullness)
 : Monster(name, closeDamage, distanceDamage, noise)
 {
     canCastSpells = false;
-    fullness = 0;
+    this->fullness = fullness;
 }
 
 // Steal life from an entity

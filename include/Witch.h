@@ -16,9 +16,10 @@ public:
     ~Witch();
     // Not in UML
     std::string getType();
+    void addSpell(int index, Spell spell);
 private:
     int mana;
-    OffensiveSpell* spells[];
+    Spell* spells = new Spell[2];
 };
 
 #endif

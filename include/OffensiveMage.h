@@ -9,11 +9,13 @@ class OffensiveMage : public Adventurer
 public:
     OffensiveMage(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int age = 20, int mana = 0);
     ~OffensiveMage();
+    // Not in UML
     virtual std::string getType();
+    void addSpell(int index, Spell spell);
 
 private:
     int mana;
-    OffensiveSpell* spells = new OffensiveSpell[2];
+    Spell* spells = new Spell[2];
 };
 
 #endif

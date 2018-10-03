@@ -12,7 +12,8 @@
 class Vampire : public Monster
 {
 public:
-    Vampire(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, std::string noise = "I vant to suck your blood!");
+    Vampire(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
+            std::string noise = "I vant to suck your blood!", int fullness = 0);
     void stealLife(Entity &e);
     // not in UML
     std::string getType();
