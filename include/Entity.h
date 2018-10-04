@@ -30,6 +30,7 @@ public:
     int kill(Entity &e);
     void setKiller(std::string killer);
     void setDeathHour();
+    std::string getLocation();
     virtual std::string getType() = 0;
 
 protected:

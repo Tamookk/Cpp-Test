@@ -22,4 +22,4 @@ void Skeleton::doot(Entity &e)
 }
 
 // Get the type of the entity
-std::string Skeleton::getType() { std::string("Skeleton"); }
+std::string Skeleton::getType() { return std::string("Skeleton"); }

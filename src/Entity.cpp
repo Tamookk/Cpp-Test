@@ -16,7 +16,7 @@ Entity::Entity(std::string name, int closeDamage, int distanceDamage)
     gold = 0;
     closeRangeDamage = closeDamage;
     this->distanceDamage = distanceDamage;
-    location = "";
+    location = "close";
 }
 
 // Move the entity to a location (close or far)
@@ -87,6 +87,21 @@ int Entity::kill(Entity &e)
     e.setKiller(name);
     e.setDeathHour();
 
+    std::string types[4] = {"Warrior", "Offensive Mage", "Defensive Mage", "Rogue"};
+
+    // Subtract the number of monsters or adventurers from the total if one dies
+    for(int i = 0; i < 4; i++)
+    {
+        if(e.getType() == types[i])
+        {
+
+        }
+        else
+        {
+            numOfMonsters--;
+        }
+    }
+
     std::cout << e.getName() << " was killed by " << name << ". RIP." << std::endl;
     std::cout << "They had " << e.getGold() << " gold coin(s)." << std::endl;
 
@@ -95,11 +110,14 @@ int Entity::kill(Entity &e)
     return freeGold;
 }
 
+// Get the location of the entity
+std::string Entity::getLocation() { return location; }
+
 // << operator
 std::ostream& operator<<(std::ostream& stream, const Entity &e)
 {
     stream << "Name: " << e.name << "\nMax Health: " << e.maximumHealth << "\nGold: ";
     stream << e.gold << "\nClose Range Damage: " << e.closeRangeDamage;
-    stream << "\nDistance Damage: " << e.distanceDamage << "\nCan Cast Spells: " << e.canCastSpells;
+    stream << "\nDistance Damage: " << e.distanceDamage;
     return stream;
 }

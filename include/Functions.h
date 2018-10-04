@@ -22,7 +22,7 @@ std::string generateName();
 Spell generateSpell(std::string type);
 
 Adventurer** generateAdventurers();
-Monster** generateMonsters(int hour);
+Monster** generateMonsters();
 
 DefensiveMage* generateDefensiveMage();
 OffensiveMage* generateOffensiveMage();

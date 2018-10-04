@@ -15,6 +15,7 @@ using namespace std;
 int hour;
 int numHours;
 int probabilityOfEncounter;
+int numOfMonsters;
 
 int main(int argc, char* argv[])
 {
@@ -49,7 +50,9 @@ int main(int argc, char* argv[])
     cout << "Running for " << numHours << " hours." << endl;
 
     // Generate adventurers
+    cout << endl << "===Your Adventurers===" << endl;
     Adventurer** adventurers = generateAdventurers();
+    int numOfAdventurers = 7;
     for(int i = 0; i < 7; i++)
     {
         cout << "==" << adventurers[i]->getType() << "==" << endl;
@@ -58,27 +61,133 @@ int main(int argc, char* argv[])
 
 
     // Main program loop
-
-    cout << "==Main Loop==" << endl;
+    cout << endl << "===Main Loop===" << endl;
     for(int i = 0; i < numHours; i++)
     {
         hour++;
 
         cout << "-Hour " << hour << "-" << endl;
-        if(distribution(generator) > probabilityOfEncounter)
+        // Check if an encounter is to be had this hour
+        if(distribution(generator) < probabilityOfEncounter)
         {
             cout << "Random Encounter!!" << endl;
-            Monster** monsters = generateMonsters(hour);
-            // generate random num of monsters between 1 and hour
-            // have adventurers fight monsters
-            //  - go through each adventurer
-            //  - randomly pick a monster
-            //  - randomly pick an action for the fighter
-            //  - carry out action on monster
-            //  - when all adventurers done, do same for monsters
-            //  - keep going with battle loop until each adventurer or monster dead
+            // Generate the monsters
+            Monster** monsters = generateMonsters();
+
+            // Have adventurers fight monsters
+            for(int i = 0; i < numOfAdventurers; i++)
+            {
+                // Randomly pick a monster
+                distribution = std::uniform_int_distribution<int>(0, numOfMonsters - 1);
+                int monster = distribution(generator);
+
+                // Randomly pick an action for the fighter based on their class
+                if(adventurers[i]->getType() == "Offensive Mage" || adventurers[i]->getType() == "Defensive Mage")
+                {
+                    // Either do a close or ranged attack, or cast a spell
+                    distribution = std::uniform_int_distribution<int>(0, 2);
+                    switch(distribution(generator))
+                    {
+                    case 0: // Close attack
+                    {
+                        if(adventurers[i]->getLocation() == "far")
+                        {
+                            adventurers[i]->move("close");
+                        }
+                        adventurers[i]->closeAttack(*monsters[monster]);
+                        break;
+                    }
+                    case 1: // Ranged attack
+                    {
+                        adventurers[i]->rangedAttack(*monsters[monster]);
+                        break;
+                    }
+                    case 2: // Cast a spell
+                    {
+                        //adventurers[i]->castSpell(*monsters[monster]);
+                        break;
+                    }
+                    default:
+                    {
+                        cout << adventurers[i]->getName() << " got confused and hurt themselves.\nThey take ";
+                        cout << hour << " damage.";
+                        adventurers[i]->takeDamage(hour);
+                        break;
+                    }
+                    }
+                }
+                else if(adventurers[i]->getType() == "Rogue")
+                {
+                    // Either do a close or ranged attack, or steal
+                    distribution = std::uniform_int_distribution<int>(0, 2);
+                    switch(distribution(generator))
+                    {
+                    case 0: // Close attack
+                    {
+                        adventurers[i]->closeAttack(*monsters[monster]);
+                        break;
+                    }
+                    case 1: // Ranged attack
+                    {
+                        adventurers[i]->rangedAttack(*monsters[monster]);
+                        break;
+                    }
+                    case 2: // Steal
+                    {
+                        //adventurers[i]->steal(*monsters[monster]);
+                        break;
+                    }
+                    default:
+                    {
+                        cout << adventurers[i]->getName() << " got confused and hurt themselves.\nThey take ";
+                        cout << hour << " damage.";
+                        adventurers[i]->takeDamage(hour);
+                        break;
+                    }
+                    }
+                }
+                else if(adventurers[i]->getType() == "Warrior")
+                {
+                    // Either do a close or ranged attack, or be chivalrous
+                    distribution = std::uniform_int_distribution<int>(0, 2);
+                    switch(distribution(generator))
+                    {
+                    case 0: // Close attack
+                    {
+                        adventurers[i]->closeAttack(*monsters[monster]);
+                        break;
+                    }
+                    case 1: // Ranged attack
+                    {
+                        adventurers[i]->rangedAttack(*monsters[monster]);
+                        break;
+                    }
+                    case 2: // Be chivalrous
+                    {
+                        //adventurers[i]->steal(*monsters[monster]);
+                        break;
+                    }
+                    default:
+                    {
+                        cout << adventurers[i]->getName() << " got confused and hurt themselves.\nThey take ";
+                        cout << hour << " damage.";
+                        adventurers[i]->takeDamage(hour);
+                        break;
+                    }
+                    }
+                }
+
+                //  - when all adventurers done, do same for monsters
+                //  - keep going with battle loop until each adventurer or monster dead
+            }
+
             delete [] monsters;
         }
+        else
+        {
+            cout << "No monsters were encountered..." << endl;
+        }
+        cout << endl;
     }
 
     delete [] adventurers;

@@ -61,7 +61,7 @@ Adventurer** generateAdventurers()
 }
 
 // Generate the monsters for the round
-Monster** generateMonsters(int hour)
+Monster** generateMonsters()
 {
     Skeleton* tmpSk;
     Tree* tmpTr;
@@ -73,6 +73,7 @@ Monster** generateMonsters(int hour)
     static std::default_random_engine generator(time(0));
     static std::uniform_int_distribution<int> distribution(1, hour);
     int num = distribution(generator);
+    numOfMonsters = num;
 
     Monster** monsters = new Monster*[num];
 
