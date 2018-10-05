@@ -9,6 +9,7 @@
 extern int hour;
 extern int numHours;
 extern int probabilityOfEncounter;
+extern int numOfAdventurers;
 extern int numOfMonsters;
 
 #endif
