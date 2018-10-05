@@ -14,7 +14,6 @@ class Spell
 {
 public:
     Spell(std::string name = "AAA", int cost = 1);
-    ~Spell();
     // not in UML
     virtual void castSpell(Entity &e) = 0;
 

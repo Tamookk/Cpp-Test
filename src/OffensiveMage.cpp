@@ -31,5 +31,5 @@ void OffensiveMage::castSpell(Entity &e)
     spells[distribution(generator)]->castSpell(e);
 }
 
-int OffensiveMage::stealGold(Entity &e){}
+int OffensiveMage::stealGold(Entity &e){ return 0; }
 void OffensiveMage::beChivalrous(Entity &e){}
