@@ -49,15 +49,17 @@ Where `n` is the maximum number of hours the adventure runs for, and `p` is the 
 
 ### Overall Program:
 
-* Fix UML diagrams
-* Continue programming functionality:
-	* Complete functionality for remaining classes.
-	* Generate random spells for spell-casting entities.
-	* Generate random entities.
-	* Other stuff that isn't coming to me right now but it will, I promise.
-* Make program loop
-* Change UML diagram to better reflect final program.
-* Create a makefile
+* Make the monster loop.
+
+* Fix the program crashing (absolutely no idea why this is happening, so rip me).
+
+* Make an adventurer die if their health drops below 0.
+
+* Move an entity to a location appropriate for an attack they want to do (i.e., move them to a close distance if they want to do a close range attack).
+
+* Many, many various different fixes, improvements and implementations.
+
+* Potentially a makefile.
 
 ## Acknowledgments
 
@@ -67,6 +69,46 @@ Where `n` is the maximum number of hours the adventure runs for, and `p` is the 
 
 ## Changelog
 
+### 05-10-2018
+* Generate a random amount of gold for a Monster when the Monster is created.
+
+* Make helpful abilities and spells apply to friendlies only.
+
+* Add health and age parameters to constructors for entities.
+
+* Print out the monsters as they are generated for a given hour.
+
+* Add a name generator - make a text file of names, read these names into a list, and pick a random one.
+
+* Make a Monster die when its health drops below 0.
+
+* Added the ability to use class-specific abilities in combat (e.g., stealing gold, casting spells).
+
+* The hour now finishes and continues onto the next one if every entity on either side is dead.
+
+### 04-10-2018
+* Continue coding the main loop of the program.
+
+### 03-10-2018
+* Add code to generate the different types of Monster.
+
+### 30-09-2018
+* Add generating spells when a mage (offensive, defensive, tree, witch) is created.
+
+### 27-09-2018
+* Finished the code for generating adventurers.
+
+* Finished programming the Spell class.
+
+* Started coding the main program loop.
+
+* Added a function that returns the type of entity.
+
+### 25-09-2018
+* Program the Skeleton, Potion, and Rogue classes.
+
+* Fix some bugs.
+
 ### 24-09-2018
 * Created all files needed for project.
 
@@ -74,5 +116,5 @@ Where `n` is the maximum number of hours the adventure runs for, and `p` is the 
 
 * Started programming functionality inside files.
 
-### 08-05-2018
+### 08-09-2018
 * Initial commit, created all files.
