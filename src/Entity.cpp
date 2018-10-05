@@ -94,7 +94,7 @@ int Entity::kill(Entity &e)
     {
         if(e.getType() == types[i])
         {
-
+            numOfAdventurers--;
         }
         else
         {

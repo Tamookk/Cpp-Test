@@ -181,6 +181,10 @@ int main(int argc, char* argv[])
                         }
                     }
 
+                    // Kill the monster if its health drops below 0
+                    if(monsters[monster]->getHealth() <= 0)
+                        adventurers[i]->kill(*monsters[monster]);
+
                     //  - when all adventurers done, do same for monsters
                     //  - keep going with battle loop until each adventurer or monster dead
                 }
