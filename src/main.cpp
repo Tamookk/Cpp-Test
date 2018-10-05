@@ -17,6 +17,7 @@ int numHours;
 int probabilityOfEncounter;
 int numOfAdventurers;
 int numOfMonsters;
+string* names;
 
 int main(int argc, char* argv[])
 {
@@ -49,6 +50,9 @@ int main(int argc, char* argv[])
         probabilityOfEncounter = 95;
 
     cout << "Running for " << numHours << " hours." << endl;
+
+    // Grab the list of names
+    getNames();
 
     // Generate adventurers
     cout << endl << "===Your Adventurers===" << endl;

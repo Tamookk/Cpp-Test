@@ -63,6 +63,8 @@ Where `n` is the maximum number of hours the adventure runs for, and `p` is the 
 
 * My compsci professor for teaching me C++ and setting this assignment.
 
+* Names in the `names.txt` file were generated from [here](https://www.fantasynamegenerators.com/world-of-warcraft.php).
+
 ## Changelog
 
 ### 24-09-2018

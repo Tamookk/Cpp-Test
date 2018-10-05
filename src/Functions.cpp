@@ -1,5 +1,41 @@
 #include "../include/Functions.h"
 
+// Grab all of the names from the name file
+void getNames()
+{
+    std::ifstream nameFile("names.txt");
+    std::string name;
+    names = new std::string[40];
+
+    // Check if file could be opened
+    if(nameFile.fail())
+    {
+        std::cerr << "Error opening file \"" << "names.txt" << "\"." << std::endl;
+        nameFile.close();
+        exit(1);
+    }
+
+    // Get all the names
+    for(int i = 0; i < 40; i++)
+    {
+        // Get the next line of name data
+        std::getline(nameFile, name);
+        names[i] = name;
+
+        // Skip line if it can't be opened
+        if(nameFile.bad())
+        {
+            std::cerr << "Error reading line. Skipping..." << std::endl;
+            nameFile.clear();
+            nameFile.ignore(100,'\n');
+        }
+
+        // Break if the end of file was reached
+        if(nameFile.eof())
+            break;
+    }
+}
+
 // Generate the adventurers
 Adventurer** generateAdventurers()
 {
@@ -130,7 +166,10 @@ Monster** generateMonsters()
 // Generate a name for the adventurer
 std::string generateName()
 {
-    return "";
+    // Grab a random name
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(1, 40);
+    return names[distribution(generator)];
 }
 
 // Generate a spell based on the given type

@@ -2,8 +2,10 @@
 #define FUNCTIONS_H
 
 #include <ctime>
+#include <fstream>
 #include <iostream>
 #include <random>
+#include <string>
 
 #include "Adventurer.h"
 #include "DefensiveMage.h"
@@ -18,6 +20,7 @@
 #include "Werewolf.h"
 #include "Witch.h"
 
+void getNames();
 std::string generateName();
 Spell* generateSpell(std::string type);
 
