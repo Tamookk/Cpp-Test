@@ -117,7 +117,11 @@ int main(int argc, char* argv[])
                             }
                             case 2: // Cast a spell
                             {
-                                adventurers[i]->castSpell(*monsters[monster]);
+                                // Cast a spell on an adventurer if the mage is defensive
+                                if(adventurers[i]->getType() == "Defensive Mage")
+                                    adventurers[i]->castSpell(*adventurers[monster]);
+                                else
+                                    adventurers[i]->castSpell(*monsters[monster]);
                                 break;
                             }
                             default:
@@ -177,7 +181,7 @@ int main(int argc, char* argv[])
                             }
                             case 2: // Be chivalrous
                             {
-                                adventurers[i]->beChivalrous(*monsters[monster]);
+                                adventurers[i]->beChivalrous(*adventurers[monster]);
                                 break;
                             }
                             default:
