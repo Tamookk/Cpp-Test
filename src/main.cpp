@@ -108,7 +108,7 @@ int main(int argc, char* argv[])
                             }
                             case 2: // Cast a spell
                             {
-                                //adventurers[i]->castSpell(*monsters[monster]);
+                                adventurers[i]->castSpell(*monsters[monster]);
                                 break;
                             }
                             default:
@@ -138,7 +138,7 @@ int main(int argc, char* argv[])
                             }
                             case 2: // Steal
                             {
-                                //adventurers[i]->steal(*monsters[monster]);
+                                adventurers[i]->stealGold(*monsters[monster]);
                                 break;
                             }
                             default:
@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
                             }
                             case 2: // Be chivalrous
                             {
-                                //adventurers[i]->steal(*monsters[monster]);
+                                adventurers[i]->beChivalrous(*monsters[monster]);
                                 break;
                             }
                             default:

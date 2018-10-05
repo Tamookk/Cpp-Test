@@ -10,6 +10,8 @@ public:
     void beChivalrous(Entity &e);
     // Not in UML
     std::string getType();
+    void castSpell(Entity &e);
+    int stealGold(Entity &e);
 
 private:
     int chivalryFactor;

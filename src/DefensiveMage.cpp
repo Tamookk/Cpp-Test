@@ -23,7 +23,19 @@ DefensiveMage::~DefensiveMage()
 std::string DefensiveMage::getType() { return std::string("Defensive Mage"); }
 
 // Add a spell to a mage's list of spells
-void DefensiveMage::addSpell(int index, Spell spell)
+void DefensiveMage::addSpell(int index, Spell* spell)
 {
     spells[index] = spell;
 }
+
+// Cast a spell
+void DefensiveMage::castSpell(Entity &e)
+{
+    // Pick a random spell and cast it
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(0, 1);
+    spells[distribution(generator)]->castSpell(e);
+}
+
+int DefensiveMage::stealGold(Entity &e){};
+void DefensiveMage::beChivalrous(Entity &e){};

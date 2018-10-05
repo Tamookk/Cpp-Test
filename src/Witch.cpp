@@ -21,7 +21,7 @@ Witch::~Witch()
 std::string Witch::getType() { return std::string("Witch"); }
 
 // Add a spell to a witch's list of spells
-void Witch::addSpell(int index, Spell spell)
+void Witch::addSpell(int index, Spell* spell)
 {
     spells[index] = spell;
 }

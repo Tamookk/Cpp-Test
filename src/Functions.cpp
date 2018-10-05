@@ -134,13 +134,13 @@ std::string generateName()
 }
 
 // Generate a spell based on the given type
-Spell generateSpell(std::string type)
+Spell* generateSpell(std::string type)
 {
     static std::default_random_engine generator(time(0));
     static std::uniform_int_distribution<int> distribution(1, 10);
     int spellNum = 0;
 
-    Spell spell;
+    Spell* spell;
     if(type == "defensive")
     {
         // Pick a random defensive spell
@@ -154,27 +154,27 @@ Spell generateSpell(std::string type)
             // Generate random healing factor
             int healingFactor = cost*distribution(generator);
             // Generate spell
-            spell = HealingSpell("Spell of Healing", cost, healingFactor);
+            spell = new HealingSpell("Spell of Healing", cost, healingFactor);
             break;
         }
         case 1: // Defensive spell
         {
             int cost = distribution(generator);
             double defenceFactor = (cost * distribution(generator))/100;
-            spell = DefenceMultiplierSpell("Spell of Good Defence", cost, defenceFactor);
+            spell = new DefenceMultiplierSpell("Spell of Good Defence", cost, defenceFactor);
             break;
         }
         case 2: // Damage multiplier spell
         {
             int cost = distribution(generator);
             double damageFactor = ((cost * distribution(generator))/100 + 1);
-            spell = DamageMultiplierSpell("Spell of Increased Damage", cost, damageFactor);
+            spell = new DamageMultiplierSpell("Spell of Increased Damage", cost, damageFactor);
             break;
         }
         default: // Spell that heals the entity by 100
         {
             int cost = distribution(generator);
-            spell = HealingSpell("Spell of Lots of Healing", cost, 100);
+            spell = new HealingSpell("Spell of Lots of Healing", cost, 100);
             break;
         }
         }
@@ -192,34 +192,34 @@ Spell generateSpell(std::string type)
             // Generate random healing factor
             int damage = cost*distribution(generator);
             // Generate spell
-            spell = DamageSpell("Spell of Damage", cost, damage);
+            spell = new DamageSpell("Spell of Damage", cost, damage);
             break;
         }
         case 1: // Defensive spell
         {
             int cost = distribution(generator);
             double defenceFactor = 1 + (cost * distribution(generator))/100;
-            spell = DefenceMultiplierSpell("Spell of Bad Defence", cost, defenceFactor);
+            spell = new DefenceMultiplierSpell("Spell of Bad Defence", cost, defenceFactor);
             break;
         }
         case 2: // Damage multiplier spell
         {
             int cost = distribution(generator);
             double damageFactor = ((cost * distribution(generator))/100);
-            spell = DamageMultiplierSpell("Spell of Lowered Damage", cost, damageFactor);
+            spell = new DamageMultiplierSpell("Spell of Lowered Damage", cost, damageFactor);
             break;
         }
         default: // Spell that damages the entity by 100
         {
             int cost = distribution(generator);
-            spell = DamageSpell("Spell of Lots of Damage", cost, 100);
+            spell = new DamageSpell("Spell of Lots of Damage", cost, 100);
             break;
         }
         }
     }
     else // Default to a damage spell
     {
-        spell = DamageSpell("Spell of Mega Damage", 1, 1000);
+        spell = new DamageSpell("Spell of Mega Damage", 1, 1000);
     }
 
     return spell;

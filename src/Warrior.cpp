@@ -21,3 +21,6 @@ void Warrior::beChivalrous(Entity &e)
 
 // Get the type of the entity
 std::string Warrior::getType() { return std::string("Warrior"); }
+
+void Warrior::castSpell(Entity &e){}
+int Warrior::stealGold(Entity &e){}

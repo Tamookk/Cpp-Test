@@ -33,3 +33,6 @@ int Rogue::stealGold(Entity &e)
 
 // Get the type of the entity
 std::string Rogue::getType() { return std::string("Rogue"); }
+
+void Rogue::castSpell(Entity &e){}
+void Rogue::beChivalrous(Entity &e){}

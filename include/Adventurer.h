@@ -18,6 +18,9 @@ public:
     void closeAttack(Entity &e);
     // Not in UML
     virtual std::string getType() = 0;
+    virtual void castSpell(Entity &e) = 0;
+    virtual int stealGold(Entity &e) = 0;
+    virtual void beChivalrous(Entity &e) = 0;
 
 protected:
     int age;

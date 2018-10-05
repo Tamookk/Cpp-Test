@@ -17,11 +17,11 @@ public:
     ~Tree();
     // not in UML
     std::string getType();
-    void addSpell(int index, Spell spell);
+    void addSpell(int index, Spell* spell);
 
 private:
     int mana;
-    Spell* spells = new Spell[2];
+    Spell** spells = new Spell*[2];
 };
 
 #endif // TREE_H

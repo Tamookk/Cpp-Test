@@ -19,7 +19,7 @@
 #include "Witch.h"
 
 std::string generateName();
-Spell generateSpell(std::string type);
+Spell* generateSpell(std::string type);
 
 Adventurer** generateAdventurers();
 Monster** generateMonsters();

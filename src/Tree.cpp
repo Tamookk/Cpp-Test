@@ -21,7 +21,7 @@ Tree::~Tree()
 std::string Tree::getType() { return std::string("Tree"); }
 
 // Add a spell to a tree's list of spells
-void Tree::addSpell(int index, Spell spell)
+void Tree::addSpell(int index, Spell* spell)
 {
     spells[index] = spell;
 }

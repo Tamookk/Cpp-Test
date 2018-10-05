@@ -1,6 +1,9 @@
 #ifndef DEFENSIVEMAGE_H
 #define DEFENSIVEMAGE_H
 
+#include <ctime>
+#include <random>
+
 #include "Adventurer.h"
 #include "DefensiveSpell.h"
 #include "Spell.h"
@@ -12,11 +15,14 @@ public:
     ~DefensiveMage();
     // not in uml
     std::string getType();
-    void addSpell(int index, Spell spell);
+    void addSpell(int index, Spell* spell);
+    void castSpell(Entity &e);
+    int stealGold(Entity &e);
+    void beChivalrous(Entity &e);
 
 private:
     int mana;
-    Spell* spells = new Spell[2];
+    Spell** spells = new Spell*[2];
 };
 
 #endif
