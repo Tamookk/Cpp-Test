@@ -13,7 +13,7 @@ class Tree : public Monster
 {
 public:
     Tree(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
-         int health = 100, std::string noise = "*leaves rustling*", int mana = 0);
+         int health = 100, std::string noise = "*leaves rustling*", int mana = 0, int gold = 0);
     ~Tree();
     // not in UML
     std::string getType();

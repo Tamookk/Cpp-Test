@@ -27,7 +27,7 @@ int Rogue::stealGold(Entity &e)
         gold = e.getGold()%thievingAbility;
         e.addGold(-gold);
     }
-    std::cout << "Adventurer stole " << gold << " gold!\n" << std::endl;
+    std::cout << "They stole " << gold << " gold!\n" << std::endl;
     return gold;
 }
 

@@ -331,7 +331,7 @@ OffensiveMage* generateOffensiveMage()
         generateSpell("offensive");
     }
 
-    return new OffensiveMage(name, closeDamage, rangedDamage, age, mana);
+    return new OffensiveMage(name, closeDamage, rangedDamage, health, age, mana);
 }
 
 // Generate a rogue
@@ -360,7 +360,7 @@ Rogue* generateRogue()
     // Generate thieving ability
     int thievingAbility = distribution(generator);
 
-    return new Rogue(name, closeDamage, rangedDamage, age, thievingAbility);
+    return new Rogue(name, closeDamage, rangedDamage, health, age, thievingAbility);
 }
 
 // Generate a warrior
@@ -386,7 +386,7 @@ Warrior* generateWarrior()
     distribution = std::uniform_int_distribution<int>(0, 10);
     int chivalry = distribution(generator);
 
-    return new Warrior(name, closeDamage, 0, age, chivalry);
+    return new Warrior(name, closeDamage, 0, health, age, chivalry);
 }
 
 // Generate a Skeleton
@@ -407,12 +407,14 @@ Skeleton* generateSkeleton()
     // Generate close damage
     distribution = std::uniform_int_distribution<int>(1, 10);
     int closeDamage = distribution(generator);
+    // Generate gold
+    int gold = distribution(generator);
 
     // Generate doot ability
     distribution = std::uniform_int_distribution<int>(15, 30);
     int dootAbility = distribution(generator);
 
-    Skeleton* temp = new Skeleton(name, closeDamage, rangedDamage, health, "doot", dootAbility);
+    Skeleton* temp = new Skeleton(name, closeDamage, rangedDamage, health, "doot", dootAbility, gold);
 
     return temp;
 }
@@ -433,12 +435,14 @@ Tree* generateTree()
     int rangedDamage = distribution(generator);
     // Generate mana
     int mana = distribution(generator);
+    // Generate gold
+    int gold = distribution(generator);
 
     // Generate close damage
     distribution = std::uniform_int_distribution<int>(1, 5);
     int closeDamage = distribution(generator);
 
-    Tree* temp = new Tree(name, closeDamage, rangedDamage, health, "*leaves rustling", mana);
+    Tree* temp = new Tree(name, closeDamage, rangedDamage, health, "*leaves rustling", mana, gold);
 
     // Generate spells
     for(int i = 0; i < 2; i++)
@@ -463,6 +467,8 @@ Vampire* generateVampire()
     // Generate ranged damage
     distribution = std::uniform_int_distribution<int>(1, 10);
     int rangedDamage = distribution(generator);
+    // Generate gold
+    int gold = distribution(generator);
 
     // Generate close damage
     distribution = std::uniform_int_distribution<int>(1, 10);
@@ -470,7 +476,7 @@ Vampire* generateVampire()
     // Generate fullness
     int fullness = distribution(generator);
 
-    Vampire* temp = new Vampire(name, closeDamage, rangedDamage, health, "I vant to suck your blood!", fullness);
+    Vampire* temp = new Vampire(name, closeDamage, rangedDamage, health, "I vant to suck your blood!", fullness, gold);
 
     return temp;
 }
@@ -493,8 +499,10 @@ Werewolf* generateWerewolf()
     // Generate loudness
     distribution = std::uniform_int_distribution<int>(1, 10);
     int loudness = distribution(generator);
+    // Generate gold
+    int gold = distribution(generator);
 
-    Werewolf* temp = new Werewolf(name, closeDamage, 0, health, "awoo", loudness);
+    Werewolf* temp = new Werewolf(name, closeDamage, 0, health, "awoo", loudness, gold);
 
     return temp;
 }
@@ -515,12 +523,14 @@ Witch* generateWitch()
     int rangedDamage = distribution(generator);
     // Generate mana
     int mana = distribution(generator);
+    // Generate gold
+    int gold = distribution(generator);
 
     // Generate close damage
     distribution = std::uniform_int_distribution<int>(1, 5);
     int closeDamage = distribution(generator);
 
-    Witch* temp = new Witch(name, closeDamage, rangedDamage, health, "Heehee!", mana);
+    Witch* temp = new Witch(name, closeDamage, rangedDamage, health, "Heehee!", mana, gold);
 
     // Generate spells
     for(int i = 0; i < 2; i++)

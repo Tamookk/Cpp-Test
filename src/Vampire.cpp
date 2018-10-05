@@ -5,8 +5,8 @@
 
 #include "../include/Vampire.h"
 
-Vampire::Vampire(std::string name, int closeDamage, int distanceDamage, int health, std::string noise, int fullness)
-: Monster(name, closeDamage, distanceDamage, health, noise)
+Vampire::Vampire(std::string name, int closeDamage, int distanceDamage, int health, std::string noise, int gold, int fullness)
+: Monster(name, closeDamage, distanceDamage, health, noise, gold)
 {
     canCastSpells = false;
     this->fullness = fullness;

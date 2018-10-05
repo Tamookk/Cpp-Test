@@ -5,8 +5,8 @@
 
 #include "../include/Werewolf.h"
 
-Werewolf::Werewolf(std::string name, int closeDamage, int distanceDamage, int health, std::string noise, int loudness)
-: Monster(name, closeDamage, distanceDamage, health, noise)
+Werewolf::Werewolf(std::string name, int closeDamage, int distanceDamage, int health, std::string noise, int loudness, int gold)
+: Monster(name, closeDamage, distanceDamage, health, noise, gold)
 {
     this->loudness = loudness;
     canCastSpells = false;

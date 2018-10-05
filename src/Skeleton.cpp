@@ -6,8 +6,8 @@
 #include "../include/Skeleton.h"
 
 Skeleton::Skeleton(std::string name, int closeDamage, int distanceDamage,
-                   int health, std::string noise, int dootAbility)
-: Monster(name, closeDamage, distanceDamage, health, noise)
+                   int health, std::string noise, int gold, int dootAbility)
+: Monster(name, closeDamage, distanceDamage, health, noise, gold)
 {
     canCastSpells = false;
     this->dootAbility = dootAbility;

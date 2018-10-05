@@ -13,7 +13,7 @@ class Witch : public Monster
 {
 public:
     Witch(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
-          int health = 100, std::string noise = "Heehee!", int mana = 0);
+          int health = 100, std::string noise = "Heehee!", int mana = 0, int gold = 0);
     ~Witch();
     // Not in UML
     std::string getType();
