@@ -26,7 +26,7 @@ HealingSpell::HealingSpell(std::string name, int cost, int healingPower)
 void HealingSpell::castSpell(Entity &e)
 {
     std::cout << "Casting a healing spell on " << e.getName() << std::endl;
-    std::cout << e.getName() << " gains " << healingPower << " HP!" << std::endl;
+    std::cout << e.getName() << " gains " << healingPower << " HP!\n" << std::endl;
     e.addHealth(healingPower);
 }
 
@@ -41,7 +41,7 @@ DefenceMultiplierSpell::DefenceMultiplierSpell(std::string name, int cost, doubl
 void DefenceMultiplierSpell::castSpell(Entity &e)
 {
     std::cout << "Casting a defence spell on " << e.getName() << std::endl;
-    std::cout << e.getName() << " now has a defence multiplier of " << defenceFactor << "!" << std::endl;
+    std::cout << e.getName() << " now has a defence multiplier of " << defenceFactor << "!\n" << std::endl;
     e.setDefenceMultiplier(defenceFactor);
 }
 
@@ -55,7 +55,7 @@ DamageMultiplierSpell::DamageMultiplierSpell(std::string name, int cost, double 
 void DamageMultiplierSpell::castSpell(Entity &e)
 {
     std::cout << "Casting a damage multiplier spell on " << e.getName() << std::endl;
-    std::cout << e.getName() << " now has a damage multiplier of " << damageFactor << "!" << std::endl;
+    std::cout << e.getName() << " now has a damage multiplier of " << damageFactor << "!\n" << std::endl;
     e.setDamageMultiplier(damageFactor);
 }
 
@@ -70,6 +70,6 @@ DamageSpell::DamageSpell(std::string name, int cost, int damage)
 void DamageSpell::castSpell(Entity &e)
 {
     std::cout << "Casting a damage spell on " << e.getName() << std::endl;
-    std::cout << e.getName() << " takes " << damage << "damage!" << std::endl;
+    std::cout << e.getName() << " takes " << damage << "damage!\n" << std::endl;
     e.setDamageMultiplier(damage);
 }

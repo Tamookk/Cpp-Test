@@ -6,11 +6,11 @@
 #include "../include/Entity.h"
 
 // Constructor
-Entity::Entity(std::string name, int closeDamage, int distanceDamage)
+Entity::Entity(std::string name, int closeDamage, int distanceDamage, int health)
 {
     this->name = name;
-    currentHealth = 100;
-    maximumHealth = 100;
+    currentHealth = health;
+    maximumHealth = health;
     damageMultiplier = 1.0;
     defenceMultiplier = 1.0;
     gold = 0;

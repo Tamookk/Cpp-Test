@@ -78,7 +78,12 @@ int main(int argc, char* argv[])
             cout << "Random Encounter!!" << endl;
             // Generate the monsters
             Monster** monsters = generateMonsters();
-
+            cout << "--Monsters this Round--" << endl;
+            for(int i = 0; i < numOfMonsters; i++)
+            {
+                cout << "=" << monsters[i]->getType() << "=" << endl;
+                cout << *monsters[i] << endl << endl;
+            }
             // Continue until all adventurers or monsters are dead
             while(numOfAdventurers != 0 || numOfMonsters != 0)
             {

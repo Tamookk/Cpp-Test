@@ -15,7 +15,7 @@ Warrior::Warrior(std::string name, int closeDamage, int distanceDamage, int age,
 void Warrior::beChivalrous(Entity &e)
 {
     std::cout << "Warrior " << name << " was chivalrous to " << e.getName() << "." << std::endl;
-    std::cout << e.getName() << " gains " << chivalryFactor << " HP!" << std::endl;
+    std::cout << e.getName() << " gains " << chivalryFactor << " HP!\n" << std::endl;
     e.addHealth(chivalryFactor);
 }
 

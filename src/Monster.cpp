@@ -15,17 +15,17 @@ Monster::Monster(std::string name, int closeDamage, int distanceDamage, std::str
 // Make a ranged attack at an entity
 void Monster::rangedAttack(Entity &e)
 {
-    std::cout << "Attacking " << e.getName() << " at range." << std::endl;
+    std::cout << name << " is attacking " << e.getName() << " at range." << std::endl;
     e.takeDamage(distanceDamage * damageMultiplier);
     std::cout << distanceDamage * damageMultiplier << " damage was done!" << std::endl;
-    std::cout << e.getHealth() << " HP remaining." << std::endl;
+    std::cout << e.getHealth() << " HP remaining.\n" << std::endl;
 }
 
 // Make a close attack at an entity
 void Monster::closeAttack(Entity &e)
 {
-    std::cout << "Attacking " << e.getName() << " in close quarters." << std::endl;
+    std::cout << name << " is attacking " << e.getName() << " in close quarters." << std::endl;
     e.takeDamage(closeRangeDamage * damageMultiplier);
     std::cout << closeRangeDamage * damageMultiplier << " damage was done!" << std::endl;
-    std::cout << e.getHealth() << " HP remaining." << std::endl;
+    std::cout << e.getHealth() << " HP remaining.\n" << std::endl;
 }
