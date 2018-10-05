@@ -5,8 +5,8 @@
 
 #include "../include/Warrior.h"
 
-Warrior::Warrior(std::string name, int closeDamage, int distanceDamage, int age, int chivalryFactor)
-: Adventurer(name, closeDamage, distanceDamage, age)
+Warrior::Warrior(std::string name, int closeDamage, int distanceDamage, int health, int age, int chivalryFactor)
+: Adventurer(name, closeDamage, distanceDamage, health, age)
 {
     this->chivalryFactor = chivalryFactor;
     canCastSpells = false;
@@ -23,4 +23,4 @@ void Warrior::beChivalrous(Entity &e)
 std::string Warrior::getType() { return std::string("Warrior"); }
 
 void Warrior::castSpell(Entity &e){}
-int Warrior::stealGold(Entity &e){}
+int Warrior::stealGold(Entity &e){ return 0; }

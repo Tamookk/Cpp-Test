@@ -6,8 +6,8 @@
 #include "../include/Adventurer.h"
 
 // Constructor
-Adventurer::Adventurer(std::string name, int closeDamage, int distanceDamage, int age)
-: Entity(name, closeDamage, distanceDamage)
+Adventurer::Adventurer(std::string name, int closeDamage, int distanceDamage, int health, int age)
+: Entity(name, closeDamage, distanceDamage, health)
 {
     this->age = age;
     deathHour = 0;

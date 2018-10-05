@@ -5,8 +5,8 @@
 
 #include "../include/Rogue.h"
 
-Rogue::Rogue(std::string name, int closeDamage, int distanceDamage, int age, int thiefSkill)
-: Adventurer(name, closeDamage, distanceDamage, age)
+Rogue::Rogue(std::string name, int closeDamage, int distanceDamage, int health, int age, int thiefSkill)
+: Adventurer(name, closeDamage, distanceDamage, health, age)
 {
     thievingAbility = thiefSkill;
     canCastSpells = false;

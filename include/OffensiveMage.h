@@ -10,7 +10,7 @@
 class OffensiveMage : public Adventurer
 {
 public:
-    OffensiveMage(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int age = 20, int mana = 0);
+    OffensiveMage(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int health = 100, int age = 20, int mana = 0);
     ~OffensiveMage();
     // Not in UML
     std::string getType();

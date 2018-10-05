@@ -13,7 +13,7 @@
 class Entity
 {
 public:
-    Entity(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int health);
+    Entity(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int health = 100);
     void move(std::string location);
     int getGold();
     void addGold(int amount);

@@ -6,8 +6,8 @@
 #include "../include/DefensiveMage.h"
 
 // Constructor
-DefensiveMage::DefensiveMage(std::string name, int closeDamage, int distanceDamage, int age, int mana)
-: Adventurer(name, closeDamage, distanceDamage, age)
+DefensiveMage::DefensiveMage(std::string name, int closeDamage, int distanceDamage, int health, int age, int mana)
+: Adventurer(name, closeDamage, distanceDamage, health, age)
 {
     this->mana = mana;
     canCastSpells = true;

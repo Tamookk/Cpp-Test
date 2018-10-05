@@ -11,7 +11,7 @@
 class DefensiveMage : public Adventurer
 {
 public:
-    DefensiveMage(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int age = 20, int mana = 0);
+    DefensiveMage(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int health = 100, int age = 20, int mana = 0);
     ~DefensiveMage();
     // not in uml
     std::string getType();

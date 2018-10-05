@@ -5,8 +5,8 @@
 
 #include "../include/Witch.h"
 
-Witch::Witch(std::string name, int closeDamage, int distanceDamage, std::string noise, int mana)
-: Monster(name, closeDamage, distanceDamage, noise)
+Witch::Witch(std::string name, int closeDamage, int distanceDamage, int health, std::string noise, int mana)
+: Monster(name, closeDamage, distanceDamage, health, noise)
 {
     this->mana = mana;
     canCastSpells = true;

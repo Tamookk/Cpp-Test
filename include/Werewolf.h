@@ -13,7 +13,7 @@ class Werewolf : public Monster
 {
 public:
     Werewolf(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
-             std::string noise = "awoo", int loudness = 0);
+             int health = 100, std::string noise = "awoo", int loudness = 0);
     void howl(Entity &e);
     // Not in UML
     std::string getType();
