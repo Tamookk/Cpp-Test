@@ -69,6 +69,7 @@ int main(int argc, char* argv[])
     cout << endl << "===Main Loop===" << endl;
     for(int i = 0; i < numHours; i++)
     {
+        int freeGold = 0;
         hour++;
 
         cout << "-Hour " << hour << "-" << endl;
@@ -196,7 +197,21 @@ int main(int argc, char* argv[])
 
                     // Kill the monster if its health drops below 0
                     if(monsters[monster]->getHealth() <= 0)
-                        adventurers[i]->kill(*monsters[monster]);
+                        freeGold = adventurers[i]->kill(*monsters[monster]);
+
+                    // Distribute the gold
+                    if(freeGold%numOfAdventurers != 0)
+                    {
+                        cout << freeGold%numOfAdventurers << " gold was lost. Oops!" << endl;
+                        freeGold -= freeGold%numOfAdventurers;
+                        cout << freeGold/numOfAdventurers << " gold was given to each adventurer." << endl << endl;
+                    }
+
+                    for(int i = 0; i < 7; i++)
+                    {
+                        if(adventurers[i]->getHealth() >= 0)
+                            adventurers[i]->addGold(freeGold/numOfAdventurers);
+                    }
 
                     // If all the monsters have died, go to the next loop
                     if(numOfMonsters == 0)
@@ -382,7 +397,7 @@ int main(int argc, char* argv[])
         cout << "Name: " << adventurers[i]->getName() << endl;
         cout << "Type: " << adventurers[i]->getType() << endl;
         cout << "Killed By: " << adventurers[i]->getKiller() << endl;
-        cout << "Hour Killed: " << adventurers[i]->getHourKilled() << endl;
+        cout << "Hour Killed: " << adventurers[i]->getHourKilled() << endl << endl;
     }
 
     delete [] adventurers;

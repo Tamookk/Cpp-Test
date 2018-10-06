@@ -412,12 +412,12 @@ Skeleton* generateSkeleton()
     // Generate ranged damage
     distribution = std::uniform_int_distribution<int>(10, 20);
     int rangedDamage = distribution(generator);
+    // Generate gold
+    int gold = distribution(generator);
 
     // Generate close damage
     distribution = std::uniform_int_distribution<int>(1, 10);
     int closeDamage = distribution(generator);
-    // Generate gold
-    int gold = distribution(generator);
 
     // Generate doot ability
     distribution = std::uniform_int_distribution<int>(15, 30);
@@ -444,7 +444,9 @@ Tree* generateTree()
     int rangedDamage = distribution(generator);
     // Generate mana
     int mana = distribution(generator);
+
     // Generate gold
+    distribution = std::uniform_int_distribution<int>(10, 20);
     int gold = distribution(generator);
 
     // Generate close damage
@@ -476,7 +478,9 @@ Vampire* generateVampire()
     // Generate ranged damage
     distribution = std::uniform_int_distribution<int>(1, 10);
     int rangedDamage = distribution(generator);
+
     // Generate gold
+    distribution = std::uniform_int_distribution<int>(10, 20);
     int gold = distribution(generator);
 
     // Generate close damage
@@ -508,7 +512,9 @@ Werewolf* generateWerewolf()
     // Generate loudness
     distribution = std::uniform_int_distribution<int>(1, 10);
     int loudness = distribution(generator);
+
     // Generate gold
+    distribution = std::uniform_int_distribution<int>(10, 20);
     int gold = distribution(generator);
 
     Werewolf* temp = new Werewolf(name, closeDamage, 0, health, "awoo", loudness, gold);
@@ -532,7 +538,9 @@ Witch* generateWitch()
     int rangedDamage = distribution(generator);
     // Generate mana
     int mana = distribution(generator);
+
     // Generate gold
+    distribution = std::uniform_int_distribution<int>(10, 20);
     int gold = distribution(generator);
 
     // Generate close damage
