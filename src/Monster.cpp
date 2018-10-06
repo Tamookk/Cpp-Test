@@ -16,6 +16,10 @@ Monster::Monster(std::string name, int closeDamage, int distanceDamage, int heal
 // Make a ranged attack at an entity
 void Monster::rangedAttack(Entity &e)
 {
+    // Move the monster if they are in the wrong location
+    if(location == "close")
+        move("far");
+
     std::cout << name << " is attacking " << e.getName() << " at range." << std::endl;
     e.takeDamage(distanceDamage * damageMultiplier);
     std::cout << distanceDamage * damageMultiplier << " damage was done!" << std::endl;
@@ -25,6 +29,10 @@ void Monster::rangedAttack(Entity &e)
 // Make a close attack at an entity
 void Monster::closeAttack(Entity &e)
 {
+    // Move the monster if they are in the wrong location
+    if(location == "far")
+        move("close");
+
     std::cout << name << " is attacking " << e.getName() << " in close quarters." << std::endl;
     e.takeDamage(closeRangeDamage * damageMultiplier);
     std::cout << closeRangeDamage * damageMultiplier << " damage was done!" << std::endl;

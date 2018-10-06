@@ -103,7 +103,7 @@ int Entity::kill(Entity &e)
     }
 
     std::cout << e.getName() << " was killed by " << name << ". RIP." << std::endl;
-    std::cout << "They had " << e.getGold() << " gold coin(s)." << std::endl;
+    std::cout << "They had " << e.getGold() << " gold coin(s)." << std::endl << std::endl;
 
     int freeGold = e.getGold();
     e.addGold(-freeGold);

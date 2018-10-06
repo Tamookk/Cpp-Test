@@ -17,6 +17,10 @@ Adventurer::Adventurer(std::string name, int closeDamage, int distanceDamage, in
 // Make a ranged attack at an entity
 void Adventurer::rangedAttack(Entity &e)
 {
+    // Move the adventurer if they are in the wrong location
+    if(location == "close")
+        move("far");
+
     std::cout << name << " is attacking " << e.getName() << " at range." << std::endl;
     e.takeDamage(distanceDamage * damageMultiplier);
     std::cout << distanceDamage * damageMultiplier << " damage was done!" << std::endl;
@@ -26,8 +30,24 @@ void Adventurer::rangedAttack(Entity &e)
 // Make a close attack at an entity
 void Adventurer::closeAttack(Entity &e)
 {
+    // Move the adventurer if they are in the wrong location
+    if(location == "far")
+        move("close");
+
     std::cout << name << " is attacking " << e.getName() << " in close quarters." << std::endl;
     e.takeDamage(closeRangeDamage * damageMultiplier);
     std::cout << closeRangeDamage * damageMultiplier << " damage was done!" << std::endl;
     std::cout << e.getHealth() << " HP remaining.\n" << std::endl;
+}
+
+// Return the killer of the adventurer
+std::string Adventurer::getKiller()
+{
+    return killedBy;
+}
+
+// Return the hour the adventurer died
+int Adventurer::getHourKilled()
+{
+    return deathHour;
 }

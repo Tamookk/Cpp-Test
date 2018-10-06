@@ -94,6 +94,10 @@ int main(int argc, char* argv[])
                     distribution = std::uniform_int_distribution<int>(0, numOfMonsters - 1);
                     int monster = distribution(generator);
 
+                    // Make sure the monster is not dead
+                    while(monsters[monster]->getHealth() == 0)
+                        monster = distribution(generator);
+
                     // Randomly pick an action for the fighter based on their class
                     if(adventurers[i]->getType() == "Offensive Mage" || adventurers[i]->getType() == "Defensive Mage")
                     {
@@ -103,10 +107,6 @@ int main(int argc, char* argv[])
                         {
                             case 0: // Close attack
                             {
-                                if(adventurers[i]->getLocation() == "far")
-                                {
-                                    adventurers[i]->move("close");
-                                }
                                 adventurers[i]->closeAttack(*monsters[monster]);
                                 break;
                             }
@@ -198,9 +198,13 @@ int main(int argc, char* argv[])
                     if(monsters[monster]->getHealth() <= 0)
                         adventurers[i]->kill(*monsters[monster]);
 
-                    //  - when all adventurers done, do same for monsters
-                    //  - keep going with battle loop until each adventurer or monster dead
+                    // If all the monsters have died, go to the next loop
+                    if(numOfMonsters == 0)
+                        break;
                 }
+
+                if(numOfMonsters == 0)
+                    break;
 
                 // Have monsters fight adventurers
                 for(int i = 0; i < numOfAdventurers; i++)
@@ -208,6 +212,10 @@ int main(int argc, char* argv[])
                     // Randomly pick an adventurer
                     distribution = std::uniform_int_distribution<int>(0, numOfAdventurers - 1);
                     int adventurer = distribution(generator);
+
+                    // Make sure the adventurer is not dead
+                    while(adventurers[adventurer]->getHealth() == 0)
+                        adventurer = distribution(generator);
 
                     // Randomly pick an action for the fighter based on their class
                     if(monsters[i]->getType() == "Tree" || adventurers[i]->getType() == "Witch")
@@ -218,10 +226,6 @@ int main(int argc, char* argv[])
                         {
                             case 0: // Close attack
                             {
-                                if(monsters[i]->getLocation() == "far")
-                                {
-                                    monsters[i]->move("close");
-                                }
                                 monsters[i]->closeAttack(*adventurers[adventurer]);
                                 break;
                             }
@@ -343,8 +347,16 @@ int main(int argc, char* argv[])
                     if(adventurers[adventurer]->getHealth() <= 0)
                         monsters[i]->kill(*adventurers[adventurer]);
 
-                    //  - keep going with battle loop until each adventurer or monster dead
+                    // If all the adventurers have died, go to the next loop
+                    if(numOfAdventurers == 0)
+                        break;
                 }
+
+                if(numOfMonsters == 0)
+                    break;
+
+                if(numOfAdventurers == 0)
+                    break;
             }
 
             delete [] monsters;
@@ -354,6 +366,23 @@ int main(int argc, char* argv[])
             cout << "No monsters were encountered..." << endl;
         }
         cout << endl;
+
+        if(numOfAdventurers == 0)
+            break;
+
+        if(numOfMonsters == 0)
+            continue;
+    }
+
+    // Print the adventure summary
+    cout << endl << "===Adventure Summary===" << endl;
+    for(int i = 0; i < 7; i++)
+    {
+        cout << "==Adventurer " << i+1 << "==" << endl;
+        cout << "Name: " << adventurers[i]->getName() << endl;
+        cout << "Type: " << adventurers[i]->getType() << endl;
+        cout << "Killed By: " << adventurers[i]->getKiller() << endl;
+        cout << "Hour Killed: " << adventurers[i]->getHourKilled() << endl;
     }
 
     delete [] adventurers;
