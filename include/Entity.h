@@ -6,7 +6,9 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include <ctime>
 #include <iostream>
+#include <random>
 
 #include "../include/GlobalVariables.h"
 

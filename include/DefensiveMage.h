@@ -1,8 +1,10 @@
+//
+// Created by Joshua Sutton
+// 24/09/2018.
+//
+
 #ifndef DEFENSIVEMAGE_H
 #define DEFENSIVEMAGE_H
-
-#include <ctime>
-#include <random>
 
 #include "Adventurer.h"
 #include "DefensiveSpell.h"

@@ -23,3 +23,7 @@ void Skeleton::doot(Entity &e)
 
 // Get the type of the entity
 std::string Skeleton::getType() { return std::string("Skeleton"); }
+
+void Skeleton::castSpell(Entity &e){}
+void Skeleton::howl(Entity &e){}
+void Skeleton::stealLife(Entity &e){}

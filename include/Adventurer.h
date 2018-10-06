@@ -6,8 +6,6 @@
 #ifndef ADVENTURER_H
 #define ADVENTURER_H
 
-#include <iostream>
-
 #include "Entity.h"
 
 class Adventurer : public Entity

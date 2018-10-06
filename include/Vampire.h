@@ -17,6 +17,10 @@ public:
     void stealLife(Entity &e);
     // not in UML
     std::string getType();
+    void doot(Entity &e);
+    void castSpell(Entity &e);
+    void howl(Entity &e);
+
 private:
     int fullness;
 };

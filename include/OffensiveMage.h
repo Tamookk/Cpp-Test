@@ -1,8 +1,10 @@
+//
+// Created by Joshua Sutton
+// 24/09/2018.
+//
+
 #ifndef OFFENSIVEMAGE_H
 #define OFFENSIVEMAGE_H
-
-#include <ctime>
-#include <random>
 
 #include "Adventurer.h"
 #include "OffensiveSpell.h"

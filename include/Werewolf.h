@@ -17,6 +17,9 @@ public:
     void howl(Entity &e);
     // Not in UML
     std::string getType();
+    void doot(Entity &e);
+    void castSpell(Entity &e);
+    void stealLife(Entity &e);
 
 private:
     int loudness;

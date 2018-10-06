@@ -201,6 +201,150 @@ int main(int argc, char* argv[])
                     //  - when all adventurers done, do same for monsters
                     //  - keep going with battle loop until each adventurer or monster dead
                 }
+
+                // Have monsters fight adventurers
+                for(int i = 0; i < numOfAdventurers; i++)
+                {
+                    // Randomly pick an adventurer
+                    distribution = std::uniform_int_distribution<int>(0, numOfAdventurers - 1);
+                    int adventurer = distribution(generator);
+
+                    // Randomly pick an action for the fighter based on their class
+                    if(monsters[i]->getType() == "Tree" || adventurers[i]->getType() == "Witch")
+                    {
+                        // Either do a close or ranged attack, or cast a spell
+                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        switch(distribution(generator))
+                        {
+                            case 0: // Close attack
+                            {
+                                if(monsters[i]->getLocation() == "far")
+                                {
+                                    monsters[i]->move("close");
+                                }
+                                monsters[i]->closeAttack(*adventurers[adventurer]);
+                                break;
+                            }
+                            case 1: // Ranged attack
+                            {
+                                monsters[i]->rangedAttack(*adventurers[adventurer]);
+                                break;
+                            }
+                            case 2: // Cast a spell
+                            {
+                                // Cast a spell on an adventurer if the mage is defensive
+                                if(monsters[i]->getType() == "Tree")
+                                    monsters[i]->castSpell(*adventurers[adventurer]);
+                                else
+                                    monsters[i]->castSpell(*adventurers[adventurer]);
+                                break;
+                            }
+                            default:
+                            {
+                                cout << monsters[i]->getName() << " got confused and hurt themselves.\nThey take ";
+                                cout << hour << " damage.";
+                                monsters[i]->takeDamage(hour);
+                                break;
+                            }
+                        }
+                    }
+                    else if(monsters[i]->getType() == "Skeleton")
+                    {
+                        // Either do a close or ranged attack, or doot
+                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        switch(distribution(generator))
+                        {
+                            case 0: // Close attack
+                            {
+                                monsters[i]->closeAttack(*adventurers[adventurer]);
+                                break;
+                            }
+                            case 1: // Ranged attack
+                            {
+                                monsters[i]->rangedAttack(*adventurers[adventurer]);
+                                break;
+                            }
+                            case 2: // Doot
+                            {
+                                monsters[i]->doot(*adventurers[adventurer]);
+                                break;
+                            }
+                            default:
+                            {
+                                cout << monsters[i]->getName() << " got confused and hurt themselves.\nThey take ";
+                                cout << hour << " damage.";
+                                monsters[i]->takeDamage(hour);
+                                break;
+                            }
+                        }
+                    }
+                    else if(monsters[i]->getType() == "Vampire")
+                    {
+                        // Either do a close or ranged attack, or suck blood
+                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        switch(distribution(generator))
+                        {
+                            case 0: // Close attack
+                            {
+                                monsters[i]->closeAttack(*adventurers[adventurer]);
+                                break;
+                            }
+                            case 1: // Ranged attack
+                            {
+                                monsters[i]->rangedAttack(*adventurers[adventurer]);
+                                break;
+                            }
+                            case 2: // Suck blood
+                            {
+                                monsters[i]->stealLife(*adventurers[adventurer]);
+                                break;
+                            }
+                            default:
+                            {
+                                cout << monsters[i]->getName() << " got confused and hurt themselves.\nThey take ";
+                                cout << hour << " damage.";
+                                monsters[i]->takeDamage(hour);
+                                break;
+                            }
+                        }
+                    }
+                    else if(monsters[i]->getType() == "Werewolf")
+                    {
+                        // Either do a close or ranged attack, or howl
+                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        switch(distribution(generator))
+                        {
+                            case 0: // Close attack
+                            {
+                                monsters[i]->closeAttack(*adventurers[adventurer]);
+                                break;
+                            }
+                            case 1: // Ranged attack
+                            {
+                                monsters[i]->rangedAttack(*adventurers[adventurer]);
+                                break;
+                            }
+                            case 2: // Howl
+                            {
+                                monsters[i]->howl(*adventurers[adventurer]);
+                                break;
+                            }
+                            default:
+                            {
+                                cout << monsters[i]->getName() << " got confused and hurt themselves.\nThey take ";
+                                cout << hour << " damage.";
+                                monsters[i]->takeDamage(hour);
+                                break;
+                            }
+                        }
+                    }
+
+                    // Kill the adventurer if its health drops below 0
+                    if(adventurers[adventurer]->getHealth() <= 0)
+                        monsters[i]->kill(*adventurers[adventurer]);
+
+                    //  - keep going with battle loop until each adventurer or monster dead
+                }
             }
 
             delete [] monsters;

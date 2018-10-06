@@ -1,3 +1,8 @@
+//
+// Created by Joshua Sutton
+// 24/09/2018.
+//
+
 #ifndef WARRIOR_H
 #define WARRIOR_H
 

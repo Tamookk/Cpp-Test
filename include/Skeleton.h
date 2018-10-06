@@ -17,6 +17,9 @@ public:
     void doot(Entity &e);
     // Not un UML
     std::string getType();
+    void castSpell(Entity &e);
+    void howl(Entity &e);
+    void stealLife(Entity &e);
 
 private:
     int dootAbility;

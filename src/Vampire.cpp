@@ -25,3 +25,8 @@ void Vampire::stealLife(Entity &e)
 
 // Get the type of the entity
 std::string Vampire::getType() { return std::string("Vampire"); }
+
+void Vampire::castSpell(Entity &e){}
+void Vampire::doot(Entity &e){}
+void Vampire::howl(Entity &e){}
+

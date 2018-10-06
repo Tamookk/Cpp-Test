@@ -22,3 +22,7 @@ void Werewolf::howl(Entity &e)
 
 // Get the type of the entity
 std::string Werewolf::getType() { return std::string("Werewolf"); }
+
+void Werewolf::castSpell(Entity &e){}
+void Werewolf::doot(Entity &e){}
+void Werewolf::stealLife(Entity &e){}

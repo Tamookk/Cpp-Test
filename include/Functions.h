@@ -1,3 +1,8 @@
+//
+// Created by Joshua Sutton
+// 27/09/2018.
+//
+
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 

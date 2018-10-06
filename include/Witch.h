@@ -18,6 +18,11 @@ public:
     // Not in UML
     std::string getType();
     void addSpell(int index, Spell* spell);
+    void doot(Entity &e);
+    void castSpell(Entity &e);
+    void howl(Entity &e);
+    void stealLife(Entity &e);
+
 private:
     int mana;
     Spell** spells = new Spell*[2];

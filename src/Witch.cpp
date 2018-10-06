@@ -25,3 +25,16 @@ void Witch::addSpell(int index, Spell* spell)
 {
     spells[index] = spell;
 }
+
+// Cast a spell
+void Witch::castSpell(Entity &e)
+{
+    // Pick a random spell and cast it
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(0, 1);
+    spells[distribution(generator)]->castSpell(e);
+}
+
+void Witch::doot(Entity &e){}
+void Witch::howl(Entity &e){}
+void Witch::stealLife(Entity &e){}
