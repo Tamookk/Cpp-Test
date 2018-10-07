@@ -22,8 +22,8 @@ string* names;
 
 int main(int argc, char* argv[])
 {
-    static std::default_random_engine generator(time(0));
-    static std::uniform_int_distribution<int> distribution(1, 100);
+    static default_random_engine generator(time(0));
+    static uniform_int_distribution<int> distribution(0, 99);
 
     if(argc != 3)
     {
@@ -87,9 +87,16 @@ int main(int argc, char* argv[])
             // Generate potion and apply to random adventurer
             cout << "Potion has been found!" << endl;
             Potion p;
-            p.applyPotion(*adventurers[distribution(generator)%(numOfAdventurers-1)]);
+            distribution = std::uniform_int_distribution<int>(0, 6);
+            int advToApply = distribution(generator);
+            while(adventurers[advToApply]->getHealth() <= 0)
+                advToApply = distribution(generator);
+            p.applyPotion(*adventurers[advToApply]);
             cout << endl;
         }
+
+        // Reset the random number distribution
+        distribution = std::uniform_int_distribution<int>(0, 99);
 
         // Check if an encounter is to be had this hour
         if(distribution(generator) < probabilityOfEncounter)
