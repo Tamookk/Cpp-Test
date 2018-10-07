@@ -17,6 +17,7 @@ public:
     void castSpell(Entity &e);
     int stealGold(Entity &e);
     void beChivalrous(Entity &e);
+    void getSpellInfo();
 
 private:
     int thievingAbility;

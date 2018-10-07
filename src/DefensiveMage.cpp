@@ -4,6 +4,7 @@
 //
 
 #include "../include/DefensiveMage.h"
+#include "../include/Functions.h"
 
 // Constructor
 DefensiveMage::DefensiveMage(std::string name, int closeDamage, int distanceDamage, int health, int age, int mana)
@@ -11,6 +12,8 @@ DefensiveMage::DefensiveMage(std::string name, int closeDamage, int distanceDama
 {
     this->mana = mana;
     canCastSpells = true;
+    for(int i = 0; i < 2; i++)
+        spells[i] = generateSpell("defensive");
 }
 
 // Destructor
@@ -22,12 +25,6 @@ DefensiveMage::~DefensiveMage()
 // Get the type of the entity
 std::string DefensiveMage::getType() { return std::string("Defensive Mage"); }
 
-// Add a spell to a mage's list of spells
-void DefensiveMage::addSpell(int index, Spell* spell)
-{
-    spells[index] = spell;
-}
-
 // Cast a spell
 void DefensiveMage::castSpell(Entity &e)
 {
@@ -35,6 +32,13 @@ void DefensiveMage::castSpell(Entity &e)
     static std::default_random_engine generator(time(0));
     static std::uniform_int_distribution<int> distribution(0, 1);
     spells[distribution(generator)]->castSpell(e);
+}
+
+// Get info on mage's spells
+void DefensiveMage::getSpellInfo()
+{
+    for(int i = 0; i < 2; i++)
+        spells[i]->printInfo();
 }
 
 int DefensiveMage::stealGold(Entity &e){ return 0; };

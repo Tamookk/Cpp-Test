@@ -17,14 +17,14 @@ public:
     ~DefensiveMage();
     // not in uml
     std::string getType();
-    void addSpell(int index, Spell* spell);
     void castSpell(Entity &e);
     int stealGold(Entity &e);
     void beChivalrous(Entity &e);
+    void getSpellInfo();
 
 private:
     int mana;
-    Spell** spells = new Spell*[2];
+    Spell* spells[2] = {0};
 };
 
 #endif

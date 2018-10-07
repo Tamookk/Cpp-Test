@@ -194,7 +194,6 @@ Spell* generateSpell(std::string type)
             int healingFactor = cost*distribution(generator);
             // Generate spell
             spell = new HealingSpell("Spell of Healing", cost, healingFactor);
-            std::cout << "Spell of Healing\nCost: " << cost << "\nHealing Factor: " << healingFactor << std::endl;
             break;
         }
         case 1: // Defensive spell
@@ -202,7 +201,6 @@ Spell* generateSpell(std::string type)
             int cost = distribution(generator);
             double defenceFactor = (cost * distribution(generator))/100.0;
             spell = new DefenceMultiplierSpell("Spell of Good Defence", cost, defenceFactor);
-            std::cout << "Spell of Good Defence\nCost: " << cost << "\nDefence Factor: " << defenceFactor << std::endl;
             break;
         }
         case 2: // Damage multiplier spell
@@ -210,14 +208,12 @@ Spell* generateSpell(std::string type)
             int cost = distribution(generator);
             double damageFactor = ((cost * distribution(generator))/100.0 + 1);
             spell = new DamageMultiplierSpell("Spell of Increased Damage", cost, damageFactor);
-            std::cout << "Spell of Increased Damage\nCost: " << cost << "\nDamage Factor: " << damageFactor << std::endl;
             break;
         }
         default: // Spell that heals the entity by 100
         {
             int cost = distribution(generator);
             spell = new HealingSpell("Spell of Lots of Healing", cost, 100);
-            std::cout << "Spell of Lots of Healing\nCost: " << cost << "\nHealing Factor: 100" << std::endl;
             break;
         }
         }
@@ -236,7 +232,6 @@ Spell* generateSpell(std::string type)
             int damage = cost*distribution(generator);
             // Generate spell
             spell = new DamageSpell("Spell of Damage", cost, damage);
-            std::cout << "Spell of Damage\nCost: " << cost << "\nHealing Factor: " << damage << std::endl;
             break;
         }
         case 1: // Defensive spell
@@ -244,7 +239,6 @@ Spell* generateSpell(std::string type)
             int cost = distribution(generator);
             double defenceFactor = 1 + (cost * distribution(generator))/100.0;
             spell = new DefenceMultiplierSpell("Spell of Bad Defence", cost, defenceFactor);
-            std::cout << "Spell of Bad Defence\nCost: " << cost << "\nDefence Factor: " << defenceFactor << std::endl;
             break;
         }
         case 2: // Damage multiplier spell
@@ -252,14 +246,12 @@ Spell* generateSpell(std::string type)
             int cost = distribution(generator);
             double damageFactor = ((cost * distribution(generator))/100.0);
             spell = new DamageMultiplierSpell("Spell of Lowered Damage", cost, damageFactor);
-            std::cout << "Spell of Lowered Damage\nCost: " << cost << "\nDamage Factor: " << damageFactor << std::endl;
             break;
         }
         default: // Spell that damages the entity by 100
         {
             int cost = distribution(generator);
             spell = new DamageSpell("Spell of Lots of Damage", cost, 100);
-            std::cout << "Spell of Lots of Damage\nCost: " << cost << "\nDamage: 100" << std::endl;
             break;
         }
         }
@@ -267,7 +259,6 @@ Spell* generateSpell(std::string type)
     else // Default to a damage spell
     {
         spell = new DamageSpell("Spell of Mega Damage", 1, 1000);
-        std::cout << "Spell of Mega Damage\nCost: 1\nDamage Factor: 1000" << std::endl;
     }
 
     return spell;
@@ -300,12 +291,6 @@ DefensiveMage* generateDefensiveMage()
 
     DefensiveMage* temp = new DefensiveMage(name, closeDamage, rangedDamage, health, age, mana);
 
-    // Generate spells
-    for(int i = 0; i < 2; i++)
-    {
-        temp->addSpell(i, generateSpell("defensive"));
-    }
-
     return temp;
 }
 
@@ -333,12 +318,6 @@ OffensiveMage* generateOffensiveMage()
     // Generate close damage
     distribution = std::uniform_int_distribution<int>(1, 5);
     int closeDamage = distribution(generator);
-
-    // Generate spells
-    for(int i = 0; i < 2; i++)
-    {
-        generateSpell("offensive");
-    }
 
     return new OffensiveMage(name, closeDamage, rangedDamage, health, age, mana);
 }

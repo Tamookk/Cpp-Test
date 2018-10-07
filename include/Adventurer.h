@@ -7,6 +7,7 @@
 #define ADVENTURER_H
 
 #include "Entity.h"
+#include "Spell.h"
 
 class Adventurer : public Entity
 {
@@ -18,6 +19,7 @@ public:
     std::string getKiller();
     int getHourKilled();
     virtual std::string getType() = 0;
+    virtual void getSpellInfo() = 0;
     virtual void castSpell(Entity &e) = 0;
     virtual int stealGold(Entity &e) = 0;
     virtual void beChivalrous(Entity &e) = 0;

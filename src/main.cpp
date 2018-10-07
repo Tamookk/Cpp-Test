@@ -60,8 +60,14 @@ int main(int argc, char* argv[])
     numOfAdventurers = 7;
     for(int i = 0; i < 7; i++)
     {
-        cout << "==" << adventurers[i]->getType() << "==" << endl;
-        cout << *adventurers[i] << endl << endl;
+        cout << "==" << (*adventurers[i]).getType() << "==" << endl;
+        cout << *adventurers[i] << endl;
+        if(adventurers[i]->getType() == "Offensive Mage" || adventurers[i]->getType() == "Defensive Mage")
+        {
+            cout << "--Spell Info--" << endl;
+            adventurers[i]->getSpellInfo();
+        }
+        cout << endl;
     }
 
 

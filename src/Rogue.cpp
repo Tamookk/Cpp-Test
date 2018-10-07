@@ -36,3 +36,4 @@ std::string Rogue::getType() { return std::string("Rogue"); }
 
 void Rogue::castSpell(Entity &e){}
 void Rogue::beChivalrous(Entity &e){}
+void Rogue::getSpellInfo(){}

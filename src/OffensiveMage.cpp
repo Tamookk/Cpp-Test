@@ -3,6 +3,7 @@
 // 24/09/2018.
 //
 
+#include "../include/Functions.h"
 #include "../include/OffensiveMage.h"
 
 // Constructor
@@ -11,6 +12,8 @@ OffensiveMage::OffensiveMage(std::string name, int closeDamage, int distanceDama
 {
     this->mana = mana;
     canCastSpells = true;
+    for(int i = 0; i < 2; i++)
+        spells[i] = generateSpell("offensive");
 }
 
 // Destructor
@@ -29,6 +32,13 @@ void OffensiveMage::castSpell(Entity &e)
     static std::default_random_engine generator(time(0));
     static std::uniform_int_distribution<int> distribution(0, 1);
     spells[distribution(generator)]->castSpell(e);
+}
+
+// Get info on mage's spells
+void OffensiveMage::getSpellInfo()
+{
+    for(int i = 0; i < 2; i++)
+        spells[i]->printInfo();
 }
 
 int OffensiveMage::stealGold(Entity &e){ return 0; }

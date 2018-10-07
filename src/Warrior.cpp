@@ -24,3 +24,4 @@ std::string Warrior::getType() { return std::string("Warrior"); }
 
 void Warrior::castSpell(Entity &e){}
 int Warrior::stealGold(Entity &e){ return 0; }
+void Warrior::getSpellInfo(){}

@@ -23,7 +23,11 @@ Entity::Entity(std::string name, int closeDamage, int distanceDamage, int health
 void Entity::move(std::string location)
 {
     if(location == "close" || location == "far")
+    {
         this->location = location;
+        std::cout << "Moving to " << location << std::endl;
+    }
+
     else
         std::cerr << "Not a valid location" << std::endl;
 }

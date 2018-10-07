@@ -11,6 +11,11 @@ Spell::Spell(std::string name, int cost)
     this->cost = cost;
 }
 
+void Spell::printInfo()
+{
+    std::cout << "Name: " << this->name << "\nCost: " << this->cost << std::endl;
+}
+
 // Healing spell (defensive)
 HealingSpell::HealingSpell(std::string name, int cost, int healingPower)
 : Spell(name, cost)

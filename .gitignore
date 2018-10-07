@@ -7,10 +7,12 @@
 *.depend
 *.cbp
 *.save-failed
+*.cscope_file_list
 # generated directories
 bin/
 obj/
 .idea/
+doxygen/
 
 ### Windows ###
 # Windows thumbnail cache files
