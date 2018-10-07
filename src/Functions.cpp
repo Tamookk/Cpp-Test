@@ -168,7 +168,7 @@ std::string generateName()
 {
     // Grab a random name
     static std::default_random_engine generator(time(0));
-    static std::uniform_int_distribution<int> distribution(1, 40);
+    static std::uniform_int_distribution<int> distribution(0, 39);
     return names[distribution(generator)];
 }
 

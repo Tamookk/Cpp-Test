@@ -85,6 +85,7 @@ int main(int argc, char* argv[])
         if(distribution(generator)%2 == 1)
         {
             // Generate potion and apply to random adventurer
+            cout << "Potion has been found!" << endl;
             Potion p;
             p.applyPotion(*adventurers[distribution(generator)%(numOfAdventurers-1)]);
             cout << endl;
@@ -108,6 +109,10 @@ int main(int argc, char* argv[])
                 // Have adventurers fight monsters
                 for(int i = 0; i < numOfAdventurers; i++)
                 {
+                    // Go to the next adventurer if the ith one is dead
+                    if(adventurers[i]->getHealth() <= 0)
+                        continue;
+
                     // Randomly pick a monster
                     distribution = std::uniform_int_distribution<int>(0, numOfMonsters - 1);
                     int monster = distribution(generator);
@@ -212,22 +217,24 @@ int main(int argc, char* argv[])
                         }
                     }
 
-                    // Kill the monster if its health drops below 0
+                    // Kill the monster if its health drops below 0 and distribute the gold
                     if(monsters[monster]->getHealth() <= 0)
+                    {
                         freeGold = adventurers[i]->kill(*monsters[monster]);
 
-                    // Distribute the gold
-                    if(freeGold%numOfAdventurers != 0)
-                    {
-                        cout << freeGold%numOfAdventurers << " gold was lost. Oops!" << endl;
-                        freeGold -= freeGold%numOfAdventurers;
-                        cout << freeGold/numOfAdventurers << " gold was given to each adventurer." << endl << endl;
-                    }
+                        // Distribute the gold
+                        if(freeGold%numOfAdventurers != 0)
+                        {
+                            cout << freeGold%numOfAdventurers << " gold was lost. Oops!" << endl;
+                            freeGold -= freeGold%numOfAdventurers;
+                            cout << freeGold/numOfAdventurers << " gold was given to each adventurer." << endl << endl;
+                        }
 
-                    for(int i = 0; i < 7; i++)
-                    {
-                        if(adventurers[i]->getHealth() >= 0)
-                            adventurers[i]->addGold(freeGold/numOfAdventurers);
+                        for(int i = 0; i < 7; i++)
+                        {
+                            if(adventurers[i]->getHealth() > 0)
+                                adventurers[i]->addGold(freeGold/numOfAdventurers);
+                        }
                     }
 
                     // If all the monsters have died, go to the next loop
@@ -239,8 +246,12 @@ int main(int argc, char* argv[])
                     break;
 
                 // Have monsters fight adventurers
-                for(int i = 0; i < numOfAdventurers; i++)
+                for(int i = 0; i < numOfMonsters; i++)
                 {
+                    // Go to the next adventurer if the ith one is dead
+                    if(monsters[i]->getHealth() <= 0)
+                        continue;
+
                     // Randomly pick an adventurer
                     distribution = std::uniform_int_distribution<int>(0, numOfAdventurers - 1);
                     int adventurer = distribution(generator);
@@ -250,7 +261,7 @@ int main(int argc, char* argv[])
                         adventurer = distribution(generator);
 
                     // Randomly pick an action for the fighter based on their class
-                    if(monsters[i]->getType() == "Tree" || adventurers[i]->getType() == "Witch")
+                    if(monsters[i]->getType() == "Tree" || monsters[i]->getType() == "Witch")
                     {
                         // Either do a close or ranged attack, or cast a spell
                         distribution = std::uniform_int_distribution<int>(0, 2);
