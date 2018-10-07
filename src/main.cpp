@@ -9,6 +9,7 @@
 
 #include "../include/Functions.h"
 #include "../include/GlobalVariables.h"
+#include "../include/Potion.h"
 
 using namespace std;
 
@@ -79,6 +80,16 @@ int main(int argc, char* argv[])
         hour++;
 
         cout << "-Hour " << hour << "-" << endl;
+
+        // Randomly find a potion and apply it to an adventurer
+        if(distribution(generator)%2 == 1)
+        {
+            // Generate potion and apply to random adventurer
+            Potion p;
+            p.applyPotion(*adventurers[distribution(generator)%(numOfAdventurers-1)]);
+            cout << endl;
+        }
+
         // Check if an encounter is to be had this hour
         if(distribution(generator) < probabilityOfEncounter)
         {
