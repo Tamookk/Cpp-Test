@@ -76,7 +76,6 @@ int main(int argc, char* argv[])
     cout << endl << "===Main Loop===" << endl;
     for(int i = 0; i < numHours; i++)
     {
-        int freeGold = 0;
         hour++;
 
         cout << "==Hour " << hour << "==" << endl;
@@ -111,7 +110,7 @@ int main(int argc, char* argv[])
                 cout << *monsters[i] << endl << endl;
             }
             // Continue until all adventurers or monsters are dead
-            while(numOfAdventurers != 0 || numOfMonsters != 0)
+            while(numOfAdventurers > 0 || numOfMonsters > 0)
             {
                 cout << "=Adventurers' Turn==" << endl;
                 // Have adventurers fight monsters
@@ -126,7 +125,7 @@ int main(int argc, char* argv[])
                     int monster = distribution(generator);
 
                     // Make sure the monster is not dead
-                    while(monsters[monster]->getHealth() == 0)
+                    while(monsters[monster]->getHealth() <= 0)
                         monster = distribution(generator);
 
                     // Randomly pick an action for the fighter based on their class
@@ -196,8 +195,8 @@ int main(int argc, char* argv[])
                     }
                     else if(adventurers[i]->getType() == "Warrior")
                     {
-                        // Either do a close or ranged attack, or be chivalrous
-                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        // Either do a close attack or be chivalrous
+                        distribution = std::uniform_int_distribution<int>(0, 1);
                         switch(distribution(generator))
                         {
                             case 0: // Close attack
@@ -205,12 +204,7 @@ int main(int argc, char* argv[])
                                 adventurers[i]->closeAttack(*monsters[monster]);
                                 break;
                             }
-                            case 1: // Ranged attack
-                            {
-                                adventurers[i]->rangedAttack(*monsters[monster]);
-                                break;
-                            }
-                            case 2: // Be chivalrous
+                            case 1: // Be chivalrous
                             {
                                 adventurers[i]->beChivalrous(*adventurers[monster]);
                                 break;
@@ -229,34 +223,37 @@ int main(int argc, char* argv[])
                     if(monsters[monster]->getHealth() <= 0)
                     {
                         int freeGold = adventurers[i]->kill(*monsters[monster]);
-
-                        // Distribute the gold
-                        if(freeGold%numOfAdventurers != 0)
+                        /*
+                        if(!(freeGold <= 0))
                         {
-                            // Randomly distribute leftover gold
-                            int goldRemainder = freeGold%numOfAdventurers;
-                            freeGold -= goldRemainder;
-                            for(int i = 0; i < goldRemainder; i++)
+                            // Distribute the gold
+                            if(freeGold%numOfAdventurers != 0)
                             {
-                                distribution = uniform_int_distribution<int>(0, 6);
-                                int adventurer = distribution(generator);
-                                while(adventurers[adventurer]->getHealth() <=0)
-                                    adventurer = distribution(generator);
-                                adventurers[adventurer]->addGold(1);
-                                cout << adventurers[adventurer]->getType() << " " << adventurers[adventurer]->getName();
-                                cout << " got 1 gold!" << endl;
+                                // Randomly distribute leftover gold
+                                int goldRemainder = freeGold%numOfAdventurers;
+                                freeGold -= goldRemainder;
+                                for(int i = 0; i < goldRemainder; i++)
+                                {
+                                    distribution = uniform_int_distribution<int>(0, 6);
+                                    int adventurer = distribution(generator);
+                                    while(adventurers[adventurer]->getHealth() <=0)
+                                        adventurer = distribution(generator);
+                                    adventurers[adventurer]->addGold(1);
+                                    cout << adventurers[adventurer]->getType() << " " << adventurers[adventurer]->getName();
+                                    cout << " got 1 gold!" << endl;
+                                }
+                                goldRemainder = 0;
+
+                                // Give each adventurer the same amount of remaining gold
+                                cout << freeGold/numOfAdventurers << " gold was given to each adventurer." << endl << endl;
                             }
-                            goldRemainder = 0;
 
-                            // Give each adventurer the same amount of remaining gold
-                            cout << freeGold/numOfAdventurers << " gold was given to each adventurer." << endl << endl;
-                        }
-
-                        for(int i = 0; i < 7; i++)
-                        {
-                            if(adventurers[i]->getHealth() > 0)
-                                adventurers[i]->addGold(freeGold/numOfAdventurers);
-                        }
+                            for(int i = 0; i < 7; i++)
+                            {
+                                if(adventurers[i]->getHealth() > 0)
+                                    adventurers[i]->addGold(freeGold/numOfAdventurers);
+                            }
+                        }*/
                     }
 
                     // If all the monsters have died, go to the next loop
@@ -380,8 +377,8 @@ int main(int argc, char* argv[])
                     }
                     else if(monsters[i]->getType() == "Werewolf")
                     {
-                        // Either do a close or ranged attack, or howl
-                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        // Either do a close attack or howl
+                        distribution = std::uniform_int_distribution<int>(0, 1);
                         switch(distribution(generator))
                         {
                             case 0: // Close attack
@@ -389,12 +386,7 @@ int main(int argc, char* argv[])
                                 monsters[i]->closeAttack(*adventurers[adventurer]);
                                 break;
                             }
-                            case 1: // Ranged attack
-                            {
-                                monsters[i]->rangedAttack(*adventurers[adventurer]);
-                                break;
-                            }
-                            case 2: // Howl
+                            case 1: // Howl
                             {
                                 monsters[i]->howl(*adventurers[adventurer]);
                                 break;
@@ -409,13 +401,42 @@ int main(int argc, char* argv[])
                         }
                     }
 
-                    // Kill the adventurer if its health drops below 0
+                    // Kill the adventurer if its health drops below 0 and distribute the gold
                     if(adventurers[adventurer]->getHealth() <= 0)
                     {
-                        monsters[i]->kill(*adventurers[adventurer]);
-                        cout << endl;
-                    }
+                        int freeGold = monsters[i]->kill(*adventurers[adventurer]);
+                        /*
+                        if(!(freeGold <= 0))
+                        {
+                            // Distribute the gold
+                            if(freeGold%numOfAdventurers != 0)
+                            {
+                                // Randomly distribute leftover gold
+                                int goldRemainder = freeGold%numOfAdventurers;
+                                freeGold -= goldRemainder;
+                                for(int i = 0; i < goldRemainder; i++)
+                                {
+                                    distribution = uniform_int_distribution<int>(0, 6);
+                                    int adventurer = distribution(generator);
+                                    while(adventurers[adventurer]->getHealth() <=0)
+                                        adventurer = distribution(generator);
+                                    adventurers[adventurer]->addGold(1);
+                                    cout << adventurers[adventurer]->getType() << " " << adventurers[adventurer]->getName();
+                                    cout << " got 1 gold!" << endl;
+                                }
+                                goldRemainder = 0;
 
+                                // Give each adventurer the same amount of remaining gold
+                                cout << freeGold/numOfAdventurers << " gold was given to each adventurer." << endl << endl;
+                            }
+
+                            for(int i = 0; i < 7; i++)
+                            {
+                                if(adventurers[i]->getHealth() > 0)
+                                    adventurers[i]->addGold(freeGold/numOfAdventurers);
+                            }
+                        }*/
+                    }
 
                     // If all the adventurers have died, go to the next loop
                     if(numOfAdventurers == 0)

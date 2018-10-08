@@ -116,7 +116,7 @@ Monster** generateMonsters()
     // Generate the monsters
     distribution = std::uniform_int_distribution<int>(1, 5);
     int randomNum = distribution(generator);
-    for(int i = 0; i < num; i++)
+    for(int i = 0; i < num + 1; i++)
     {
         switch(randomNum)
         {

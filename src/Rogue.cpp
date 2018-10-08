@@ -28,6 +28,7 @@ int Rogue::stealGold(Entity &e)
         e.addGold(-gold);
     }
     std::cout << "They stole " << gold << " gold!\n" << std::endl;
+    std::cout << e.getType() << " " << e.getName() << " now has " << e.getGold() << " gold." << std::endl;
     return gold;
 }
 

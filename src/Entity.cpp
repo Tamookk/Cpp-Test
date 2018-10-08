@@ -93,7 +93,9 @@ int Entity::kill(Entity &e)
 {
     int origAdvs = numOfAdventurers;
 
-    e.setKiller(name);
+    std::string killer = name + " " + getType();
+
+    e.setKiller(killer);
     e.setDeathHour();
 
     std::string types[4] = {"Warrior", "Offensive Mage", "Defensive Mage", "Rogue"};
