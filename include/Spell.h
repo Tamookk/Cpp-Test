@@ -16,6 +16,7 @@ public:
     Spell(std::string name = "AAA", int cost = 1);
     // not in UML
     void printInfo();
+    int getCost();
     virtual void castSpell(Entity &e) = 0;
 
 protected:

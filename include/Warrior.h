@@ -18,6 +18,7 @@ public:
     void castSpell(Entity &e);
     int stealGold(Entity &e);
     void getSpellInfo();
+    void addMana(int amt);
 
 private:
     int chivalryFactor;

@@ -30,7 +30,7 @@ std::string generateName();
 Spell* generateSpell(std::string type);
 
 Adventurer** generateAdventurers();
-Monster** generateMonsters();
+Monster** generateMonsters(int numOfMonsters);
 
 DefensiveMage* generateDefensiveMage();
 OffensiveMage* generateOffensiveMage();

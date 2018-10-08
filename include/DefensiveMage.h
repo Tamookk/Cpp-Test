@@ -21,9 +21,11 @@ public:
     int stealGold(Entity &e);
     void beChivalrous(Entity &e);
     void getSpellInfo();
+    void addMana(int amt);
 
 private:
     int mana;
+    int maxMana;
     Spell* spells[2] = {0};
 };
 

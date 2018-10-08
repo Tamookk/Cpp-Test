@@ -11,8 +11,6 @@
 extern int hour;
 extern int numHours;
 extern int probabilityOfEncounter;
-extern int numOfAdventurers;
-extern int numOfMonsters;
 extern std::string* names;
 
 #endif

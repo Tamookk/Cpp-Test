@@ -16,8 +16,6 @@ using namespace std;
 int hour;
 int numHours;
 int probabilityOfEncounter;
-int numOfAdventurers;
-int numOfMonsters;
 string* names;
 
 int main(int argc, char* argv[])
@@ -36,9 +34,15 @@ int main(int argc, char* argv[])
     // Set up running time
     numHours = atoi(argv[1]);
     if(numHours < 1)
+    {
+    	cout << "Running time too low. Setting to the minimum (1)." << endl << endl;
         numHours = 1;
+    }
     if(numHours > 48)
+    {
+    	cout << "Running time too high. Setting to the maximum (48)." << endl << endl;
         numHours = 48;
+    }
 
     // Set up hour
     hour = 0;
@@ -46,9 +50,15 @@ int main(int argc, char* argv[])
     // Set up probability of encounter
     probabilityOfEncounter = atoi(argv[2]);
     if(probabilityOfEncounter < 5)
+    {
+    	cout << "Encounter probability too low. Setting to the minimum (5)" << endl << endl;
         probabilityOfEncounter = 5;
+    }
     if(probabilityOfEncounter > 95)
+    {
+    	cout << "Encounter probability too high. Setting to the maximum (95)" << endl << endl;
         probabilityOfEncounter = 95;
+    }
 
     cout << "Running for " << numHours << " hours." << endl;
 
@@ -58,7 +68,7 @@ int main(int argc, char* argv[])
     // Generate adventurers
     cout << endl << "===Your Adventurers===" << endl;
     Adventurer** adventurers = generateAdventurers();
-    numOfAdventurers = 7;
+    int numOfAdventurers = 7;
     for(int i = 0; i < 7; i++)
     {
         cout << "==" << (*adventurers[i]).getType() << "==" << endl;
@@ -102,13 +112,18 @@ int main(int argc, char* argv[])
         {
             cout << "Random Encounter!!" << endl;
             // Generate the monsters
-            Monster** monsters = generateMonsters();
+            distribution = uniform_int_distribution<int>(1, hour);
+            int numOfMonsters = distribution(generator);
+            Monster** monsters = generateMonsters(numOfMonsters);
             cout << "--Monsters this Round--" << endl;
             for(int i = 0; i < numOfMonsters; i++)
             {
                 cout << "=" << monsters[i]->getType() << "=" << endl;
                 cout << *monsters[i] << endl << endl;
             }
+
+            int numMonstersThisRound = numOfMonsters - 1;
+
             // Continue until all adventurers or monsters are dead
             while(numOfAdventurers > 0 || numOfMonsters > 0)
             {
@@ -120,8 +135,11 @@ int main(int argc, char* argv[])
                     if(adventurers[i]->getHealth() <= 0)
                         continue;
 
+                    if(numOfMonsters == 0)
+                        break;
+
                     // Randomly pick a monster
-                    distribution = std::uniform_int_distribution<int>(0, numOfMonsters - 1);
+                    distribution = uniform_int_distribution<int>(0, numMonstersThisRound);
                     int monster = distribution(generator);
 
                     // Make sure the monster is not dead
@@ -149,7 +167,7 @@ int main(int argc, char* argv[])
                             {
                                 // Cast a spell on an adventurer if the mage is defensive
                                 if(adventurers[i]->getType() == "Defensive Mage")
-                                    adventurers[i]->castSpell(*adventurers[monster]);
+                                    adventurers[i]->castSpell(*adventurers[monster%numOfAdventurers]);
                                 else
                                     adventurers[i]->castSpell(*monsters[monster]);
                                 break;
@@ -223,7 +241,9 @@ int main(int argc, char* argv[])
                     if(monsters[monster]->getHealth() <= 0)
                     {
                         int freeGold = adventurers[i]->kill(*monsters[monster]);
-                        /*
+
+                        numOfMonsters--;
+
                         if(!(freeGold <= 0))
                         {
                             // Distribute the gold
@@ -253,7 +273,7 @@ int main(int argc, char* argv[])
                                 if(adventurers[i]->getHealth() > 0)
                                     adventurers[i]->addGold(freeGold/numOfAdventurers);
                             }
-                        }*/
+                        }
                     }
 
                     // If all the monsters have died, go to the next loop
@@ -268,16 +288,16 @@ int main(int argc, char* argv[])
                 // Have monsters fight adventurers
                 for(int i = 0; i < numOfMonsters; i++)
                 {
-                    // Go to the next adventurer if the ith one is dead
+                    // Go to the next monster if the ith one is dead
                     if(monsters[i]->getHealth() <= 0)
                         continue;
 
                     // Randomly pick an adventurer
-                    distribution = std::uniform_int_distribution<int>(0, numOfAdventurers - 1);
+                    distribution = std::uniform_int_distribution<int>(0, 6);
                     int adventurer = distribution(generator);
 
                     // Make sure the adventurer is not dead
-                    while(adventurers[adventurer]->getHealth() == 0)
+                    while(adventurers[adventurer]->getHealth() <= 0)
                         adventurer = distribution(generator);
 
                     // Randomly pick an action for the fighter based on their class
@@ -405,7 +425,9 @@ int main(int argc, char* argv[])
                     if(adventurers[adventurer]->getHealth() <= 0)
                     {
                         int freeGold = monsters[i]->kill(*adventurers[adventurer]);
-                        /*
+
+                        numOfAdventurers--;
+
                         if(!(freeGold <= 0))
                         {
                             // Distribute the gold
@@ -418,8 +440,14 @@ int main(int argc, char* argv[])
                                 {
                                     distribution = uniform_int_distribution<int>(0, 6);
                                     int adventurer = distribution(generator);
-                                    while(adventurers[adventurer]->getHealth() <=0)
-                                        adventurer = distribution(generator);
+                                    if(adventurers[adventurer]->getHealth() <=0)
+                                        i--;
+                                    else
+                                    {
+                                        adventurers[adventurer]->addGold(1);
+                                        cout << adventurers[adventurer]->getType() << " " << adventurers[adventurer]->getName();
+                                        cout << " got 1 gold!" << endl;
+                                    }
                                     adventurers[adventurer]->addGold(1);
                                     cout << adventurers[adventurer]->getType() << " " << adventurers[adventurer]->getName();
                                     cout << " got 1 gold!" << endl;
@@ -435,7 +463,7 @@ int main(int argc, char* argv[])
                                 if(adventurers[i]->getHealth() > 0)
                                     adventurers[i]->addGold(freeGold/numOfAdventurers);
                             }
-                        }*/
+                        }
                     }
 
                     // If all the adventurers have died, go to the next loop
@@ -460,9 +488,20 @@ int main(int argc, char* argv[])
 
         if(numOfAdventurers == 0)
             break;
-
-        if(numOfMonsters == 0)
-            continue;
+        else
+        {
+            // Fully heal each still alive adventurer
+            for(int i = 0; i < 7; i++)
+            {
+                if(adventurers[i]->getHealth() > 0)
+                {
+                    adventurers[i]->addHealth(1000);
+                    // Restore a mage's mana
+                    if(adventurers[i]->getType() == "Offensive Mage" || adventurers[i]->getType() == "Defensive Mage")
+                        adventurers[i]->addMana(100);
+                }
+            }
+        }
     }
 
     // Print the adventure summary

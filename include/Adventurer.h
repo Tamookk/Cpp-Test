@@ -23,6 +23,7 @@ public:
     virtual void castSpell(Entity &e) = 0;
     virtual int stealGold(Entity &e) = 0;
     virtual void beChivalrous(Entity &e) = 0;
+    virtual void addMana(int amt) = 0;
 
 protected:
     int age;

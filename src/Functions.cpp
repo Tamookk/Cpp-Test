@@ -97,7 +97,7 @@ Adventurer** generateAdventurers()
 }
 
 // Generate the monsters for the round
-Monster** generateMonsters()
+Monster** generateMonsters(int numOfMonsters)
 {
     Skeleton* tmpSk;
     Tree* tmpTr;
@@ -105,18 +105,14 @@ Monster** generateMonsters()
     Werewolf* tmpWr;
     Witch* tmpWt;
 
-    // Generate the number of monsters for that hour
-    static std::default_random_engine generator(time(0));
-    static std::uniform_int_distribution<int> distribution(1, hour);
-    int num = distribution(generator);
-    numOfMonsters = num;
-
-    Monster** monsters = new Monster*[num];
+    // Generate the number of monsters for that hour);
+    Monster** monsters = new Monster*[numOfMonsters];
 
     // Generate the monsters
-    distribution = std::uniform_int_distribution<int>(1, 5);
+    static std::default_random_engine generator(time(0));
+    static std::uniform_int_distribution<int> distribution(1, 5);
     int randomNum = distribution(generator);
-    for(int i = 0; i < num + 1; i++)
+    for(int i = 0; i < numOfMonsters; i++)
     {
         switch(randomNum)
         {

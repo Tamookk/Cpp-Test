@@ -91,29 +91,13 @@ void Entity::setDeathHour() { deathHour = hour; }
 // Kill an entity
 int Entity::kill(Entity &e)
 {
-    int origAdvs = numOfAdventurers;
-
-    std::string killer = name + " " + getType();
+    std::string killer = name + " (" + getType() + ")";
 
     e.setKiller(killer);
     e.setDeathHour();
 
-    std::string types[4] = {"Warrior", "Offensive Mage", "Defensive Mage", "Rogue"};
-
-    // Subtract the number of adventurers from the total if one dies
-    for(int i = 0; i < 4; i++)
-    {
-        if(e.getType() == types[i])
-        {
-            numOfAdventurers--;
-        }
-    }
-
-    if(origAdvs == numOfAdventurers)
-        numOfMonsters--;
-
     std::cout << e.getType() << " " << e.getName() << " was killed by ";
-    std::cout << getType() << " " << name << ". RIP." << std::endl;
+    std::cout << name <<  " (" << getType() << "). RIP." << std::endl;
     std::cout << "They had " << e.getGold() << " gold coin(s)." << std::endl;
 
     int freeGold = e.getGold();

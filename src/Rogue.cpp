@@ -27,8 +27,8 @@ int Rogue::stealGold(Entity &e)
         gold = e.getGold()%thievingAbility;
         e.addGold(-gold);
     }
-    std::cout << "They stole " << gold << " gold!\n" << std::endl;
-    std::cout << e.getType() << " " << e.getName() << " now has " << e.getGold() << " gold." << std::endl;
+    std::cout << "They stole " << gold << " gold!" << std::endl;
+    std::cout << e.getType() << " " << e.getName() << " now has " << e.getGold() << " gold.\n" << std::endl;
     return gold;
 }
 
@@ -38,3 +38,4 @@ std::string Rogue::getType() { return std::string("Rogue"); }
 void Rogue::castSpell(Entity &e){}
 void Rogue::beChivalrous(Entity &e){}
 void Rogue::getSpellInfo(){}
+void Rogue::addMana(int amt){}
