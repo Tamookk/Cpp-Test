@@ -32,6 +32,7 @@ void getNames()
 
         // Break if the end of file was reached
         if(nameFile.eof())
+            nameFile.close();
             break;
     }
 }

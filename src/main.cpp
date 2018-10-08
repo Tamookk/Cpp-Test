@@ -7,9 +7,9 @@
 #include <iostream>
 #include <random>
 
-#include "../include/Functions.h"
-#include "../include/GlobalVariables.h"
-#include "../include/Potion.h"
+#include "Functions.h"
+#include "GlobalVariables.h"
+#include "Potion.h"
 
 using namespace std;
 
@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
                 cout << *monsters[i] << endl << endl;
             }
 
-            int numMonstersThisRound = numOfMonsters - 1;
+            int numMonstersThisRound = numOfMonsters;
 
             // Continue until all adventurers or monsters are dead
             while(numOfAdventurers > 0 || numOfMonsters > 0)
@@ -139,7 +139,7 @@ int main(int argc, char* argv[])
                         break;
 
                     // Randomly pick a monster
-                    distribution = uniform_int_distribution<int>(0, numMonstersThisRound);
+                    distribution = uniform_int_distribution<int>(0, numMonstersThisRound - 1);
                     int monster = distribution(generator);
 
                     // Make sure the monster is not dead
@@ -227,7 +227,7 @@ int main(int argc, char* argv[])
                             }
                             case 1: // Be chivalrous
                             {
-                                adventurers[i]->beChivalrous(*adventurers[monster]);
+                                adventurers[i]->beChivalrous(*adventurers[monster > 6 ? 6 : monster]);
                                 break;
                             }
                             default:
@@ -434,7 +434,7 @@ int main(int argc, char* argv[])
 
                         numOfAdventurers--;
 
-                        if(!(freeGold <= 0))
+                        if(!(freeGold <= 0) && numOfAdventurers > 0)
                         {
                             // Distribute the gold
                             if(freeGold%numOfAdventurers != 0)
@@ -484,8 +484,8 @@ int main(int argc, char* argv[])
                     break;
             }
 
-            for(int i = 0; i <= numMonstersThisRound; i++)
-            	delete monsters[numMonstersThisRound];
+            for(int i = 0; i < numMonstersThisRound; i++)
+                delete monsters[i];
 
             delete [] monsters;
         }

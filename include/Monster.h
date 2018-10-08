@@ -12,6 +12,7 @@ class Monster : public Entity
 {
 public:
     Monster(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0, int health = 100, std::string noise = "grr", int gold = 0);
+    virtual ~Monster(){};
     void rangedAttack(Entity &e);
     void closeAttack(Entity &e);
     // Not in UML
