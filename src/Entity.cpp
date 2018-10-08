@@ -16,7 +16,7 @@ Entity::Entity(std::string name, int closeDamage, int distanceDamage, int health
     gold = 0;
     closeRangeDamage = closeDamage;
     this->distanceDamage = distanceDamage;
-    location = "close";
+    location = "far";
 }
 
 // Move the entity to a location (close or far)

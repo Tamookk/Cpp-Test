@@ -219,7 +219,10 @@ int main(int argc, char* argv[])
                         {
                             case 0: // Close attack
                             {
-                                adventurers[i]->closeAttack(*monsters[monster]);
+                                if(adventurers[i]->getLocation() == "far")
+                                    adventurers[i]->move("close");
+                                else
+                                    adventurers[i]->closeAttack(*monsters[monster]);
                                 break;
                             }
                             case 1: // Be chivalrous
@@ -403,7 +406,10 @@ int main(int argc, char* argv[])
                         {
                             case 0: // Close attack
                             {
-                                monsters[i]->closeAttack(*adventurers[adventurer]);
+                                if(monsters[i]->getLocation() == "far")
+                                    monsters[i]->move("close");
+                                else
+                                    monsters[i]->closeAttack(*adventurers[adventurer]);
                                 break;
                             }
                             case 1: // Howl
@@ -501,6 +507,7 @@ int main(int argc, char* argv[])
                         adventurers[i]->addMana(100);
                 }
             }
+            cout << "The remaining adventurers were fully healed, and mages had their mana restored.\n" << endl;
         }
     }
 
