@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
         int freeGold = 0;
         hour++;
 
-        cout << "-Hour " << hour << "-" << endl;
+        cout << "==Hour " << hour << "==" << endl;
 
         // Randomly find a potion and apply it to an adventurer
         if(distribution(generator)%2 == 1)
@@ -113,8 +113,9 @@ int main(int argc, char* argv[])
             // Continue until all adventurers or monsters are dead
             while(numOfAdventurers != 0 || numOfMonsters != 0)
             {
+                cout << "=Adventurers' Turn==" << endl;
                 // Have adventurers fight monsters
-                for(int i = 0; i < numOfAdventurers; i++)
+                for(int i = 0; i < 7; i++)
                 {
                     // Go to the next adventurer if the ith one is dead
                     if(adventurers[i]->getHealth() <= 0)
@@ -227,13 +228,27 @@ int main(int argc, char* argv[])
                     // Kill the monster if its health drops below 0 and distribute the gold
                     if(monsters[monster]->getHealth() <= 0)
                     {
-                        freeGold = adventurers[i]->kill(*monsters[monster]);
+                        int freeGold = adventurers[i]->kill(*monsters[monster]);
 
                         // Distribute the gold
                         if(freeGold%numOfAdventurers != 0)
                         {
-                            cout << freeGold%numOfAdventurers << " gold was lost. Oops!" << endl;
-                            freeGold -= freeGold%numOfAdventurers;
+                            // Randomly distribute leftover gold
+                            int goldRemainder = freeGold%numOfAdventurers;
+                            freeGold -= goldRemainder;
+                            for(int i = 0; i < goldRemainder; i++)
+                            {
+                                distribution = uniform_int_distribution<int>(0, 6);
+                                int adventurer = distribution(generator);
+                                while(adventurers[adventurer]->getHealth() <=0)
+                                    adventurer = distribution(generator);
+                                adventurers[adventurer]->addGold(1);
+                                cout << adventurers[adventurer]->getType() << " " << adventurers[adventurer]->getName();
+                                cout << " got 1 gold!" << endl;
+                            }
+                            goldRemainder = 0;
+
+                            // Give each adventurer the same amount of remaining gold
                             cout << freeGold/numOfAdventurers << " gold was given to each adventurer." << endl << endl;
                         }
 
@@ -252,6 +267,7 @@ int main(int argc, char* argv[])
                 if(numOfMonsters == 0)
                     break;
 
+                cout << "=Monsters' Turn=" << endl;
                 // Have monsters fight adventurers
                 for(int i = 0; i < numOfMonsters; i++)
                 {
@@ -288,7 +304,7 @@ int main(int argc, char* argv[])
                             {
                                 // Cast a spell on an adventurer if the mage is defensive
                                 if(monsters[i]->getType() == "Tree")
-                                    monsters[i]->castSpell(*adventurers[adventurer]);
+                                    monsters[i]->castSpell(*monsters[distribution(generator)%numOfMonsters]);
                                 else
                                     monsters[i]->castSpell(*adventurers[adventurer]);
                                 break;
@@ -395,7 +411,11 @@ int main(int argc, char* argv[])
 
                     // Kill the adventurer if its health drops below 0
                     if(adventurers[adventurer]->getHealth() <= 0)
+                    {
                         monsters[i]->kill(*adventurers[adventurer]);
+                        cout << endl;
+                    }
+
 
                     // If all the adventurers have died, go to the next loop
                     if(numOfAdventurers == 0)
@@ -431,8 +451,15 @@ int main(int argc, char* argv[])
         cout << "==Adventurer " << i+1 << "==" << endl;
         cout << "Name: " << adventurers[i]->getName() << endl;
         cout << "Type: " << adventurers[i]->getType() << endl;
-        cout << "Killed By: " << adventurers[i]->getKiller() << endl;
-        cout << "Hour Killed: " << adventurers[i]->getHourKilled() << endl << endl;
+        cout << "Gold: " << adventurers[i]->getGold() << endl;
+        if(adventurers[i]->getHealth() <= 0)
+        {
+            cout << "Killed By: " << adventurers[i]->getKiller() << endl;
+            cout << "Hour Killed: " << adventurers[i]->getHourKilled() << endl << endl;
+        }
+        else
+            cout << "Adventurer was not killed." << endl << endl;
+
     }
 
     delete [] adventurers;

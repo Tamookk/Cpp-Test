@@ -13,6 +13,7 @@ Potion::Potion()
     // Randomly choose an alignment for the potion (has no impact on potion effect)
     static std::default_random_engine generator(time(0));
     static std::uniform_int_distribution<int> distribution(0, 10);
+    distribution(generator); // Generates same number first time every time, so running once
     int randomChance = distribution(generator)%2;
     std::string alignment;
     alignment = randomChance ? "Good " : "Bad ";
@@ -37,7 +38,7 @@ void Potion::applyPotion(Adventurer &adv)
     // Apply a randomly chosen good or bad effect on the adventurer
     if(good) // Either increase damage multiplier or reduce defence multiplier or add health if health less than 100
     {
-        std::cout << "Potion has a good affect on adventurer " << adv.getName() << std::endl;
+        std::cout << "Potion has a good effect on adventurer " << adv.getName() << std::endl;
         int effect = distribution(generator)%3;
         switch(effect)
         {
@@ -54,7 +55,7 @@ void Potion::applyPotion(Adventurer &adv)
             double defenceMult = 1 - (double)distribution(generator)/10;
             std::cout << "Adventurer's defence multiplier was changed!" << std::endl;
             adv.setDefenceMultiplier(defenceMult);
-            std::cout << "Adventurer now has a defence multiplier of " << defenceMult << "." << std::endl;
+            std::cout << "Adventurer now has a defence multiplier of " << (1 + defenceMult) << "." << std::endl;
             break;
         }
         case 2: // Add health to the adventurer
@@ -90,7 +91,7 @@ void Potion::applyPotion(Adventurer &adv)
             double defenceMult = 1 + (double)distribution(generator)/10;
             std::cout << "Adventurer's defence multiplier was changed!" << std::endl;
             adv.setDefenceMultiplier(defenceMult);
-            std::cout << "Adventurer now has a defence multiplier of " << defenceMult << "." << std::endl;
+            std::cout << "Adventurer now has a defence multiplier of " << (1 - defenceMult) << "." << std::endl;
             break;
         }
         case 2: // Remove health to the adventurer

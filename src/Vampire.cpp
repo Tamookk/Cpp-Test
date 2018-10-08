@@ -19,7 +19,7 @@ void Vampire::stealLife(Entity &e)
     e.takeDamage(fullness%10);
     addHealth(fullness%10);
     std::cout << name << " the Vampire steals " << fullness%10 << " HP from " << e.getName();
-    std::cout << "!" << std::endl;
+    std::cout << "!" << std::endl << std::endl;
     fullness += (fullness%10) + 1;
 }
 

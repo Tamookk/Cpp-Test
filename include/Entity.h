@@ -6,6 +6,7 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include <cmath>
 #include <ctime>
 #include <iostream>
 #include <random>
@@ -27,6 +28,7 @@ public:
     int getHealth();
     void setDamageMultiplier(double val);
     void setDefenceMultiplier(double val);
+    double getDefenceMultiplier();
     void setMaximumHealth(int val);
     int getMaxHealth();
     int kill(Entity &e);

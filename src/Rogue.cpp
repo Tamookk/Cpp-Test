@@ -15,7 +15,7 @@ Rogue::Rogue(std::string name, int closeDamage, int distanceDamage, int health, 
 int Rogue::stealGold(Entity &e)
 {
     // The amount of gold the rogue steals is dependent on their theiving ability
-    std::cout << name << " attempts to steal gold from " << e.getName() << "..." << std::endl;
+    std::cout << "Rogue " << name << " attempts to steal gold from " << e.getType() << " " << e.getName() << "..." << std::endl;
     int gold = 0;
     if(thievingAbility > e.getGold())
     {

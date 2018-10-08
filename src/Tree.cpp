@@ -32,6 +32,7 @@ void Tree::castSpell(Entity &e)
     // Pick a random spell and cast it
     static std::default_random_engine generator(time(0));
     static std::uniform_int_distribution<int> distribution(0, 1);
+    std::cout << "Tree " << name << " ";
     spells[distribution(generator)]->castSpell(e);
 }
 

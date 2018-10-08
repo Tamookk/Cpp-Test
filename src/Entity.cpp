@@ -70,6 +70,9 @@ void Entity::setDamageMultiplier(double val) { damageMultiplier = val; }
 // Set the entity's defence multiplier (lower is better)
 void Entity::setDefenceMultiplier(double val) { defenceMultiplier = val; }
 
+// Get the entity's defence multiplier
+double Entity::getDefenceMultiplier() { return defenceMultiplier; }
+
 // Set the entity's maximum health
 void Entity::setMaximumHealth(int val) { maximumHealth = val; }
 
@@ -107,7 +110,8 @@ int Entity::kill(Entity &e)
     if(origAdvs == numOfAdventurers)
         numOfMonsters--;
 
-    std::cout << e.getName() << " was killed by " << name << ". RIP." << std::endl;
+    std::cout << e.getType() << " " << e.getName() << " was killed by ";
+    std::cout << getType() << " " << name << ". RIP." << std::endl;
     std::cout << "They had " << e.getGold() << " gold coin(s)." << std::endl;
 
     int freeGold = e.getGold();

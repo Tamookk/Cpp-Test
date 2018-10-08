@@ -21,9 +21,10 @@ void Adventurer::rangedAttack(Entity &e)
     if(location == "close")
         move("far");
 
-    std::cout << name << " is attacking " << e.getName() << " at range." << std::endl;
+    std::cout << getType() << " " << name << " is attacking " << e.getType();
+    std::cout << " " << e.getName() << " at range." << std::endl;
     e.takeDamage(distanceDamage * damageMultiplier);
-    std::cout << distanceDamage * damageMultiplier << " damage was done!" << std::endl;
+    std::cout << round(distanceDamage * damageMultiplier * e.getDefenceMultiplier()) << " damage was done!" << std::endl;
     std::cout << e.getHealth() << " HP remaining.\n" << std::endl;
 }
 
@@ -34,9 +35,10 @@ void Adventurer::closeAttack(Entity &e)
     if(location == "far")
         move("close");
 
-    std::cout << name << " is attacking " << e.getName() << " in close quarters." << std::endl;
+    std::cout << getType() << " " << name << " is attacking " << e.getType();
+    std::cout << " " << e.getName() << " in close quarters." << std::endl;
     e.takeDamage(closeRangeDamage * damageMultiplier);
-    std::cout << closeRangeDamage * damageMultiplier << " damage was done!" << std::endl;
+    std::cout << round(closeRangeDamage * damageMultiplier * e.getDefenceMultiplier()) << " damage was done!" << std::endl;
     std::cout << e.getHealth() << " HP remaining.\n" << std::endl;
 }
 

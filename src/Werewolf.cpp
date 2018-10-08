@@ -16,7 +16,7 @@ void Werewolf::howl(Entity &e)
 {
     std::cout << monsterNoise << std::endl;
     std::cout << "Werewolf " << name << " howls at " << e.getName() << std::endl;
-    std::cout << e.getName() << " takes " << loudness << " damage!" << std::endl;
+    std::cout << e.getName() << " takes " << loudness << " damage!" << std::endl << std::endl;
     e.takeDamage(loudness);
 }
 
