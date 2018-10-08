@@ -14,6 +14,9 @@ Witch::Witch(std::string name, int closeDamage, int distanceDamage, int health, 
 
 Witch::~Witch()
 {
+    for(int i = 0; i < 2; i++)
+        delete spells[i];
+
     delete [] spells;
 }
 

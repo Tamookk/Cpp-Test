@@ -20,6 +20,9 @@ DefensiveMage::DefensiveMage(std::string name, int closeDamage, int distanceDama
 // Destructor
 DefensiveMage::~DefensiveMage()
 {
+    for(int i = 0; i < 2; i++)
+        delete spells[i];
+
     delete [] spells;
 }
 

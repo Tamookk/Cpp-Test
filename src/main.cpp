@@ -484,6 +484,9 @@ int main(int argc, char* argv[])
                     break;
             }
 
+            for(int i = 0; i <= numMonstersThisRound; i++)
+            	delete monsters[numMonstersThisRound];
+
             delete [] monsters;
         }
         else
@@ -529,7 +532,12 @@ int main(int argc, char* argv[])
 
     }
 
+    for(int i = 0; i < 7; i++)
+    	delete adventurers[i];
+
     delete [] adventurers;
+
+    delete [] names;
 
     return 0;
 }
