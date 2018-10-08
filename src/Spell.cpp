@@ -11,10 +11,7 @@ Spell::Spell(std::string name, int cost)
     this->cost = cost;
 }
 
-void Spell::printInfo()
-{
-    std::cout << "Name: " << this->name << "\nCost: " << this->cost << std::endl;
-}
+void Spell::printInfo() { std::cout << "Name: " << this->name << "\nCost: " << this->cost << std::endl; }
 
 int Spell::getCost() { return cost; }
 

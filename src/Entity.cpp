@@ -33,22 +33,13 @@ void Entity::move(std::string location)
 }
 
 // Add gold to the entity
-void Entity::addGold(int amount)
-{
-    gold += amount;
-}
+void Entity::addGold(int amount) { gold += amount; }
 
 // Return the gold the entity has
-int Entity::getGold()
-{
-    return gold;
-}
+int Entity::getGold() { return gold; }
 
 // Take damage
-void Entity::takeDamage(int damage)
-{
-    currentHealth -= damage*defenceMultiplier;
-}
+void Entity::takeDamage(int damage) { currentHealth -= damage*defenceMultiplier; }
 
 // Add health to the entity
 void Entity::addHealth(int health)
@@ -80,10 +71,7 @@ void Entity::setMaximumHealth(int val) { maximumHealth = val; }
 int Entity::getMaxHealth() { return maximumHealth; }
 
 // Set who killed the entity
-void Entity::setKiller(std::string killer)
-{
-    killedBy = killer;
-}
+void Entity::setKiller(std::string killer) { killedBy = killer; }
 
 // Set the hour the entity died at
 void Entity::setDeathHour() { deathHour = hour; }

@@ -43,13 +43,7 @@ void Adventurer::closeAttack(Entity &e)
 }
 
 // Return the killer of the adventurer
-std::string Adventurer::getKiller()
-{
-    return killedBy;
-}
+std::string Adventurer::getKiller() { return killedBy; }
 
 // Return the hour the adventurer died
-int Adventurer::getHourKilled()
-{
-    return deathHour;
-}
+int Adventurer::getHourKilled() { return deathHour; }

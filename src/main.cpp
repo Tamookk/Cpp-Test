@@ -105,7 +105,7 @@ int main(int argc, char* argv[])
         }
 
         // Reset the random number distribution
-        distribution = std::uniform_int_distribution<int>(0, 99);
+        distribution = uniform_int_distribution<int>(0, 99);
 
         // Check if an encounter is to be had this hour
         if(distribution(generator) < probabilityOfEncounter)
@@ -150,7 +150,7 @@ int main(int argc, char* argv[])
                     if(adventurers[i]->getType() == "Offensive Mage" || adventurers[i]->getType() == "Defensive Mage")
                     {
                         // Either do a close or ranged attack, or cast a spell
-                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        distribution = uniform_int_distribution<int>(0, 2);
                         switch(distribution(generator))
                         {
                             case 0: // Close attack
@@ -184,7 +184,7 @@ int main(int argc, char* argv[])
                     else if(adventurers[i]->getType() == "Rogue")
                     {
                         // Either do a close or ranged attack, or steal
-                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        distribution = uniform_int_distribution<int>(0, 2);
                         switch(distribution(generator))
                         {
                             case 0: // Close attack
@@ -214,7 +214,7 @@ int main(int argc, char* argv[])
                     else if(adventurers[i]->getType() == "Warrior")
                     {
                         // Either do a close attack or be chivalrous
-                        distribution = std::uniform_int_distribution<int>(0, 1);
+                        distribution = uniform_int_distribution<int>(0, 1);
                         switch(distribution(generator))
                         {
                             case 0: // Close attack
@@ -296,7 +296,7 @@ int main(int argc, char* argv[])
                         continue;
 
                     // Randomly pick an adventurer
-                    distribution = std::uniform_int_distribution<int>(0, 6);
+                    distribution = uniform_int_distribution<int>(0, 6);
                     int adventurer = distribution(generator);
 
                     // Make sure the adventurer is not dead
@@ -341,7 +341,7 @@ int main(int argc, char* argv[])
                     else if(monsters[i]->getType() == "Skeleton")
                     {
                         // Either do a close or ranged attack, or doot
-                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        distribution = uniform_int_distribution<int>(0, 2);
                         switch(distribution(generator))
                         {
                             case 0: // Close attack
@@ -371,7 +371,7 @@ int main(int argc, char* argv[])
                     else if(monsters[i]->getType() == "Vampire")
                     {
                         // Either do a close or ranged attack, or suck blood
-                        distribution = std::uniform_int_distribution<int>(0, 2);
+                        distribution = uniform_int_distribution<int>(0, 2);
                         switch(distribution(generator))
                         {
                             case 0: // Close attack
@@ -401,7 +401,7 @@ int main(int argc, char* argv[])
                     else if(monsters[i]->getType() == "Werewolf")
                     {
                         // Either do a close attack or howl
-                        distribution = std::uniform_int_distribution<int>(0, 1);
+                        distribution = uniform_int_distribution<int>(0, 1);
                         switch(distribution(generator))
                         {
                             case 0: // Close attack
@@ -532,6 +532,7 @@ int main(int argc, char* argv[])
 
     }
 
+    // Free up memory
     for(int i = 0; i < 7; i++)
     	delete adventurers[i];
 
