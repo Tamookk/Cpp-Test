@@ -23,14 +23,12 @@ public:
     void addGold(int amount);
     void takeDamage(int damage);
     void addHealth(int health);
-    // Not in UML
     friend std::ostream& operator<<(std::ostream& stream, const Entity &e);
     std::string getName();
     int getHealth();
     void setDamageMultiplier(double val);
     void setDefenceMultiplier(double val);
     double getDefenceMultiplier();
-    void setMaximumHealth(int val);
     int getMaxHealth();
     int kill(Entity &e);
     void setKiller(std::string killer);
@@ -47,7 +45,6 @@ protected:
     int closeRangeDamage;
     int distanceDamage;
     bool canCastSpells;
-    // Not in UML but needed
     std::string location;
     double defenceMultiplier;
     int deathHour;

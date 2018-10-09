@@ -15,7 +15,6 @@ public:
     virtual ~Monster(){};
     void rangedAttack(Entity &e);
     void closeAttack(Entity &e);
-    // Not in UML
     virtual std::string getType() = 0;
     virtual void castSpell(Entity &e) = 0;
     virtual void doot(Entity &e) = 0;

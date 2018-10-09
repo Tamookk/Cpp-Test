@@ -64,9 +64,6 @@ void Entity::setDefenceMultiplier(double val) { defenceMultiplier = val; }
 // Get the entity's defence multiplier
 double Entity::getDefenceMultiplier() { return defenceMultiplier; }
 
-// Set the entity's maximum health
-void Entity::setMaximumHealth(int val) { maximumHealth = val; }
-
 // Get the entity's maximum health
 int Entity::getMaxHealth() { return maximumHealth; }
 

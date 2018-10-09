@@ -15,7 +15,6 @@ public:
     Werewolf(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
              int health = 100, std::string noise = "awoo", int loudness = 0, int gold = 0);
     void howl(Entity &e);
-    // Not in UML
     std::string getType();
     void doot(Entity &e);
     void castSpell(Entity &e);

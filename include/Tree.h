@@ -15,7 +15,6 @@ public:
     Tree(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
          int health = 100, std::string noise = "*leaves rustling*", int mana = 0, int gold = 0);
     ~Tree();
-    // not in UML
     std::string getType();
     void addSpell(int index, Spell* spell);
     void doot(Entity &e);
@@ -25,6 +24,7 @@ public:
 
 private:
     int mana;
+    int maxMana;
     Spell** spells = new Spell*[2];
 };
 

@@ -14,7 +14,6 @@ class Spell
 {
 public:
     Spell(std::string name = "AAA", int cost = 1);
-    // not in UML
     void printInfo();
     int getCost();
     virtual void castSpell(Entity &e) = 0;
@@ -24,7 +23,6 @@ protected:
     int cost;
 };
 
-// Not in UML
 // Defensive Spell
 class HealingSpell : public Spell
 {

@@ -431,12 +431,6 @@ Tree* generateTree()
 
     Tree* temp = new Tree(name, closeDamage, rangedDamage, health, "*leaves rustling", mana, gold);
 
-    // Generate spells
-    for(int i = 0; i < 2; i++)
-    {
-        temp->addSpell(i, generateSpell("defensive"));
-    }
-
     return temp;
 }
 
@@ -524,12 +518,6 @@ Witch* generateWitch()
     int closeDamage = distribution(generator);
 
     Witch* temp = new Witch(name, closeDamage, rangedDamage, health, "Heehee!", mana, gold);
-
-    // Generate spells
-    for(int i = 0; i < 2; i++)
-    {
-        temp->addSpell(i, generateSpell("offensive"));
-    }
 
     return temp;
 }

@@ -3,13 +3,17 @@
 // 24/09/2018.
 //
 
+#include "../include/Functions.h"
 #include "../include/Tree.h"
 
 Tree::Tree(std::string name, int closeDamage, int distanceDamage, int health, std::string noise, int gold, int mana)
 : Monster(name, closeDamage, distanceDamage, health, noise, gold)
 {
     this-> mana = mana;
+    maxMana = mana;
     canCastSpells = true;
+    for(int i = 0; i < 2; i++)
+        spells[i] = generateSpell("defensive");
 }
 
 Tree::~Tree()
@@ -23,17 +27,27 @@ Tree::~Tree()
 // Return the type of the entity
 std::string Tree::getType() { return std::string("Tree"); }
 
-// Add a spell to a tree's list of spells
-void Tree::addSpell(int index, Spell* spell) { spells[index] = spell; }
-
 // Cast a spell
 void Tree::castSpell(Entity &e)
 {
+    if(location == "close")
+        move("far");
     // Pick a random spell and cast it
     static std::default_random_engine generator(time(0));
     static std::uniform_int_distribution<int> distribution(0, 1);
-    std::cout << "Tree " << name << " ";
-    spells[distribution(generator)]->castSpell(e);
+    int spellNum = distribution(generator);
+
+    // Check if the tree has enough mana to cast the spell
+    if(mana < spells[spellNum]->getCost())
+    {
+        std::cout << getType() << " " << name << " tries to cast a spell, but fails!\nThey don't have enough mana.\n" << std::endl;
+    }
+    else
+    {
+        std::cout << "Tree " << name;
+        spells[spellNum]->castSpell(e);
+        mana -= spells[spellNum]->getCost();
+    }
 }
 
 void Tree::doot(Entity &e){}

@@ -15,7 +15,6 @@ public:
     Skeleton(std::string name = "AAA", int closeDamage = 0, int distanceDamage = 0,
              int health = 100, std::string noise = "doot", int dootAbility = 0, int gold = 0);
     void doot(Entity &e);
-    // Not un UML
     std::string getType();
     void castSpell(Entity &e);
     void howl(Entity &e);

@@ -16,7 +16,6 @@ public:
     virtual ~Adventurer(){};
     void rangedAttack(Entity &e);
     void closeAttack(Entity &e);
-    // Not in UML
     std::string getKiller();
     int getHourKilled();
     virtual std::string getType() = 0;
