@@ -7,7 +7,7 @@
 #define TREE_H
 
 #include "Monster.h"
-#include "DefensiveSpell.h"
+#include "Spell.h"
 
 class Tree : public Monster
 {

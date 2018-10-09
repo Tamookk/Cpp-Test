@@ -7,7 +7,7 @@
 #define WITCH_H
 
 #include "Monster.h"
-#include "OffensiveSpell.h"
+#include "Spell.h"
 
 class Witch : public Monster
 {

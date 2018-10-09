@@ -7,7 +7,6 @@
 #define DEFENSIVEMAGE_H
 
 #include "Adventurer.h"
-#include "DefensiveSpell.h"
 #include "Spell.h"
 
 class DefensiveMage : public Adventurer

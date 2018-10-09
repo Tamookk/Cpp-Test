@@ -7,7 +7,6 @@
 #define OFFENSIVEMAGE_H
 
 #include "Adventurer.h"
-#include "OffensiveSpell.h"
 #include "Spell.h"
 
 class OffensiveMage : public Adventurer
